@@ -5,8 +5,8 @@ import the_lucky_gauntlet.Screens.*;
 
 public class The_Lucky_Gauntlet {
 	public static void main(String[] args) {
-		Player mc = new Player("Adam");
-		Player partner = new Player("Joe");
+		Player mc = new Player("Henry", "mc");
+		Player partner = new Player("Joe", "partner");
 		
 		mc.setPartner(partner);
 		partner.setPartner(mc);
