@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="the_lucky_gauntlet.Screens.PauseController">
+   <top>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Paused" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="20.0" top="20.0" />
+         </BorderPane.margin>
+      </Text>
+   </top>
+   <padding>
+      <Insets top="10.0" />
+   </padding>
+   <bottom>
+      <VBox alignment="CENTER" prefHeight="161.0" prefWidth="960.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="settingsButton" alignment="CENTER" mnemonicParsing="false" prefWidth="750.0" text="Settings" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="homeButton" alignment="CENTER" mnemonicParsing="false" prefWidth="750.0" text="Home Screen" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="mapButton" alignment="CENTER" mnemonicParsing="false" prefWidth="750.0" text="See Map" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="returnButton" alignment="CENTER" mnemonicParsing="false" prefWidth="750.0" text="Return To Game" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </bottom>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fx:id="partnerPhoto" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <FlowPane.margin>
+                        <Insets right="20.0" />
+                     </FlowPane.margin>
+                     <image>
+                        <Image url="@../../Sprites/Archer.png" />
+                     </image>
+                  </ImageView>
+                  <VBox prefHeight="150.0" prefWidth="250.0">
+                     <children>
+                        <Text fx:id="partnerName" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="partnerClass" strokeType="OUTSIDE" strokeWidth="0.0" text="Class">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fx:id="partnerAttack" strokeType="OUTSIDE" strokeWidth="0.0" text="ATK: " />
+                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+                           <children>
+                              <Text fx:id="partnerHealth" stroke="#ffffff00" strokeLineCap="BUTT" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: black;" text="health/maxHealth" textAlignment="CENTER" wrappingWidth="136.63671875" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+                           <children>
+                              <Text fx:id="partnerEnergy" stroke="#ffffff00" strokeLineCap="BUTT" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: black;" text="energy/maxEnergy" textAlignment="CENTER" wrappingWidth="136.63671875" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </VBox>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="30.0" top="10.0" />
+               </GridPane.margin>
+            </FlowPane>
+            <FlowPane prefHeight="150.0" prefWidth="442.0">
+               <children>
+                  <ImageView fx:id="mcPhoto" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <FlowPane.margin>
+                        <Insets right="20.0" />
+                     </FlowPane.margin>
+                     <image>
+                        <Image url="@../../Sprites/Archer.png" />
+                     </image>
+                  </ImageView>
+                  <VBox prefHeight="150.0" prefWidth="250.0">
+                     <children>
+                        <Text fx:id="mcName" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mcClass" strokeType="OUTSIDE" strokeWidth="0.0" text="Class">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fx:id="mcAttack" strokeType="OUTSIDE" strokeWidth="0.0" text="ATK: " />
+                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+                           <children>
+                              <Text fx:id="mcHealth" stroke="#ffffff00" strokeLineCap="BUTT" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: black;" text="health/maxHealth" textAlignment="CENTER" wrappingWidth="136.63671875" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+                           <children>
+                              <Text fx:id="mcEnergy" stroke="#ffffff00" strokeLineCap="BUTT" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: black;" text="energy/maxEnergy" textAlignment="CENTER" wrappingWidth="136.63671875" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="30.0" top="10.0" />
+               </GridPane.margin>
+            </FlowPane>
+            <FlowPane prefHeight="150.0" prefWidth="442.0" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="mcWeaponPhoto" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <FlowPane.margin>
+                        <Insets right="20.0" />
+                     </FlowPane.margin>
+                     <image>
+                        <Image url="@../../Sprites/Fists.png" />
+                     </image>
+                  </ImageView>
+                  <VBox prefHeight="150.0" prefWidth="250.0">
+                     <children>
+                        <Text fx:id="mcWeaponName" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="mcWeaponClass" strokeType="OUTSIDE" strokeWidth="0.0" text="Class">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fx:id="mcWeaponAttack" strokeType="OUTSIDE" strokeWidth="0.0" text="ATK Bonus: " />
+                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+                           <children>
+                              <Text fx:id="mcWeaponDurability" stroke="#ffffff00" strokeLineCap="BUTT" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: black;" text="durability/maxdurability" textAlignment="CENTER" wrappingWidth="136.63671875" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </FlowPane>
+            <FlowPane prefHeight="150.0" prefWidth="442.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="partnerWeaponPhoto" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <FlowPane.margin>
+                        <Insets right="20.0" />
+                     </FlowPane.margin>
+                     <image>
+                        <Image url="@../../Sprites/Fists.png" />
+                     </image>
+                  </ImageView>
+                  <VBox prefHeight="150.0" prefWidth="250.0">
+                     <children>
+                        <Text fx:id="partnerWeaponName" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="partnerWeaponClass" strokeType="OUTSIDE" strokeWidth="0.0" text="Class">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fx:id="partnerWeaponAttack" strokeType="OUTSIDE" strokeWidth="0.0" text="ATK Bonus: " />
+                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+                           <children>
+                              <Text fx:id="partnerWeaponDurability" stroke="#ffffff00" strokeLineCap="BUTT" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: black;" text="durability/maxdurability" textAlignment="CENTER" wrappingWidth="136.63671875" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </FlowPane>
+         </children>
+      </GridPane>
+   </center>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <VBox prefHeight="295.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>
