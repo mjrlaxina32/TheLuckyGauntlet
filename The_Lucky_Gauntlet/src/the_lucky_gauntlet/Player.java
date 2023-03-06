@@ -9,12 +9,16 @@ import java.util.ArrayList;
 
 public class Player extends Character {
 	private Player partner;
+	protected String playerType; // Registers if the player is the MC or Partner
+	private static ArrayList<Player> players = new ArrayList<Player>(); // So that we can freely access the player/partner in any file
 
 	Scanner sc = new Scanner(System.in);
 	Random rand = new Random();
 
-	public Player(String newName) {
+	public Player(String newName, String newPlayerType) {
 		super(newName);
+		playerType = newPlayerType;
+		players.add(this);
 	}
 
 	// Partner Methods
@@ -26,9 +30,16 @@ public class Player extends Character {
 	public Player getPartner() {
 		return partner;
 	}
-
 	public String getPartnerName() {
 		return partner.getName();
+	}
+	public static Player getMC() throws IllegalArgumentException {
+		for(Player ply : players) {
+			if(ply.playerType.equals("mc")) {
+				return ply;
+			}
+		}
+		throw new IllegalArgumentException();
 	}
 
 	// Peaceful Room Actions
