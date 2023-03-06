@@ -61,6 +61,22 @@ public abstract class Character {
 	public Weapon getWeapon() {
 		return weapon;
 	}
+	
+	// Base Value Re-randomization
+	public void resetAtkValue(int randFactor) {
+		int baseFactor = 20 - randFactor;
+		attack = rand.nextInt(randFactor) + baseFactor;
+	}
+	public void resetHealthValue(int randFactor) {
+		int baseFactor = 50 - randFactor;
+		maxHealth = rand.nextInt(randFactor) + baseFactor;
+		health = maxHealth;
+	}
+	public void resetEnergyValue(int randFactor) {
+		int baseFactor = 200 - randFactor;
+		maxEnergy = rand.nextInt(randFactor) + baseFactor;
+		energy = maxEnergy;
+	}
 
 	// Utility methods
 	public void takeDamage(int dmg) {
