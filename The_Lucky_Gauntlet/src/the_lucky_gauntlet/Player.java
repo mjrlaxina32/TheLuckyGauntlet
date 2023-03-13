@@ -12,8 +12,8 @@ public class Player extends Character {
 	protected String playerType; // Registers if the player is the MC or Partner
 	private static ArrayList<Player> players = new ArrayList<Player>(); // So that we can freely access the player/partner in any file
 
-	Scanner sc = new Scanner(System.in);
-	Random rand = new Random();
+	public Scanner sc = new Scanner(System.in);
+	public Random rand = new Random();
 
 	public Player(String newName, String newPlayerType) {
 		super(newName);
