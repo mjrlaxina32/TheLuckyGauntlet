@@ -32,17 +32,12 @@
    <bottom>
       <VBox alignment="CENTER" prefHeight="161.0" prefWidth="960.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="settingsButton" alignment="CENTER" mnemonicParsing="false" prefWidth="750.0" text="Settings" textAlignment="CENTER">
+            <Button fx:id="homeButton" alignment="CENTER" mnemonicParsing="false" onAction="#openMenu" prefWidth="750.0" text="Home Screen" textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="homeButton" alignment="CENTER" mnemonicParsing="false" prefWidth="750.0" text="Home Screen" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="mapButton" alignment="CENTER" mnemonicParsing="false" prefWidth="750.0" text="See Map" textAlignment="CENTER">
+            <Button fx:id="mapButton" alignment="CENTER" mnemonicParsing="false" onAction="#openMap" prefWidth="750.0" text="See Map" textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>
