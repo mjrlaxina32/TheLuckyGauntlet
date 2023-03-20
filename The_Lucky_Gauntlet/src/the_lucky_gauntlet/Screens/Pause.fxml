@@ -2,13 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -89,16 +90,16 @@
                         </Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" />
                         <Text fx:id="partnerAttack" strokeType="OUTSIDE" strokeWidth="0.0" text="ATK: " />
-                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-radius: 10;">
-                           <children>
-                              <Text fx:id="partnerHealth" stroke="#ffffff00" strokeLineCap="BUTT" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: black;" text="health/maxHealth" textAlignment="CENTER" wrappingWidth="136.63671875" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-radius: 10;">
-                           <children>
-                              <Text fx:id="partnerEnergy" stroke="#ffffff00" strokeLineCap="BUTT" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: black;" text="energy/maxEnergy" textAlignment="CENTER" wrappingWidth="136.63671875" />
-                           </children>
-                        </HBox>
+                        <ProgressBar fx:id="partnerHealth" accessibleText="HEALTH" prefHeight="18.0" prefWidth="255.0" progress="0.49">
+                           <effect>
+                              <ColorAdjust hue="-1.0" />
+                           </effect>
+                        </ProgressBar>
+                        <ProgressBar fx:id="partnerEnergy" prefHeight="18.0" prefWidth="255.0" progress="0.59">
+                           <effect>
+                              <ColorAdjust hue="0.02" />
+                           </effect>
+                        </ProgressBar>
                      </children>
                      <FlowPane.margin>
                         <Insets />
@@ -133,16 +134,16 @@
                         </Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" />
                         <Text fx:id="mcAttack" strokeType="OUTSIDE" strokeWidth="0.0" text="ATK: " />
-                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-radius: 10;">
-                           <children>
-                              <Text fx:id="mcHealth" stroke="#ffffff00" strokeLineCap="BUTT" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: black;" text="health/maxHealth" textAlignment="CENTER" wrappingWidth="136.63671875" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-radius: 10;">
-                           <children>
-                              <Text fx:id="mcEnergy" stroke="#ffffff00" strokeLineCap="BUTT" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: black;" text="energy/maxEnergy" textAlignment="CENTER" wrappingWidth="136.63671875" />
-                           </children>
-                        </HBox>
+                        <ProgressBar fx:id="mcHealth" accessibleText="HEALTH" prefHeight="18.0" prefWidth="255.0" progress="0.0">
+                           <effect>
+                              <ColorAdjust hue="-1.0" />
+                           </effect>
+                        </ProgressBar>
+                        <ProgressBar fx:id="mcEnergy" prefHeight="18.0" prefWidth="255.0" progress="0.59">
+                           <effect>
+                              <ColorAdjust hue="0.02" />
+                           </effect>
+                        </ProgressBar>
                      </children>
                   </VBox>
                </children>
@@ -174,11 +175,11 @@
                         </Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" />
                         <Text fx:id="mcWeaponAttack" strokeType="OUTSIDE" strokeWidth="0.0" text="ATK Bonus: " />
-                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-radius: 10;">
-                           <children>
-                              <Text fx:id="mcWeaponDurability" stroke="#ffffff00" strokeLineCap="BUTT" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: black;" text="durability/maxdurability" textAlignment="CENTER" wrappingWidth="136.63671875" />
-                           </children>
-                        </HBox>
+                        <ProgressBar fx:id="mcWeaponDurability" prefHeight="18.0" prefWidth="255.0" progress="0.59">
+                           <effect>
+                              <ColorAdjust hue="-0.69" />
+                           </effect>
+                        </ProgressBar>
                      </children>
                   </VBox>
                </children>
@@ -210,11 +211,11 @@
                         </Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" />
                         <Text fx:id="partnerWeaponAttack" strokeType="OUTSIDE" strokeWidth="0.0" text="ATK Bonus: " />
-                        <HBox alignment="CENTER" prefHeight="20.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-radius: 10;">
-                           <children>
-                              <Text fx:id="partnerWeaponDurability" stroke="#ffffff00" strokeLineCap="BUTT" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-border-color: black;" text="durability/maxdurability" textAlignment="CENTER" wrappingWidth="136.63671875" />
-                           </children>
-                        </HBox>
+                        <ProgressBar fx:id="partnerWeaponDurability" prefHeight="18.0" prefWidth="255.0" progress="0.59">
+                           <effect>
+                              <ColorAdjust hue="-0.69" />
+                           </effect>
+                        </ProgressBar>
                      </children>
                   </VBox>
                </children>
