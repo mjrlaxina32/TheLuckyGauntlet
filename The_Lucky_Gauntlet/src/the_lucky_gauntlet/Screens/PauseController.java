@@ -1,29 +1,47 @@
 package the_lucky_gauntlet.Screens;
 
+// Utility
+import the_lucky_gauntlet.*;
+
+// JavaFX Set-up
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.fxml.*;
+
+// Components
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
-import the_lucky_gauntlet.*;
+// Alert Components
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.*;
+import java.util.Optional;
+
+// Events
+import javafx.event.ActionEvent;
+
+// Exceptions
+import java.io.IOException;
+
+
 
 public class PauseController implements Initializable {
 	
 	@FXML ImageView mcPhoto, partnerPhoto, mcWeaponPhoto, partnerWeaponPhoto;
 	@FXML Text mcName, mcClass, mcAttack;
-        @FXML ProgressBar mcHealth, mcEnergy;
+	@FXML ProgressBar mcHealth, mcEnergy;
 	@FXML Text partnerName, partnerClass, partnerAttack;
-        @FXML ProgressBar partnerHealth, partnerEnergy;
+	@FXML ProgressBar partnerHealth, partnerEnergy;
 	@FXML Text mcWeaponName, mcWeaponClass, mcWeaponAttack;
-        @FXML ProgressBar mcWeaponDurability;
+	@FXML ProgressBar mcWeaponDurability;
 	@FXML Text partnerWeaponName, partnerWeaponClass, partnerWeaponAttack;
-        @FXML ProgressBar partnerWeaponDurability;
+	@FXML ProgressBar partnerWeaponDurability;
 	
 	Player mc, partner;
 	
@@ -53,5 +71,40 @@ public class PauseController implements Initializable {
 		partnerWeaponClass.setText("Class"); // We have't set-up class specific weapons yet
 		partnerWeaponAttack.setText("ATK Bonus: " + partner.getWeapon().getAtkBonus());
 		partnerWeaponDurability.setProgress((float)partner.getWeapon().getDurability()/partner.getWeapon().getMaxDurability());
+	}
+	
+	private FXMLLoader openNewWindow(String fileName, ActionEvent e) throws IOException{
+		// Getting the current Window
+		Stage currentStage = (Stage)((Node) e.getSource()).getScene().getWindow();
+
+		// Getting the next Screen
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(fileName));
+		Parent root = loader.load();
+		Scene newScene = new Scene(root);
+
+		// Updating the screen
+		currentStage.hide();
+		currentStage.setScene(newScene);
+		currentStage.show();
+		
+		return loader;
+	}
+	
+	@FXML private void openMap(ActionEvent event) throws IOException {
+		FXMLLoader loader = openNewWindow("Map.fxml", event);
+		MapController MController = loader.getController();
+		
+		MController.updateLastScreen("Pause.fxml");
+	}
+	@FXML private void openMenu(ActionEvent event) throws IOException {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("End Game");
+		alert.setHeaderText("Are you sure that you want to close the game?");
+		alert.setContentText("All your progress will be lost");
+		
+		Optional<ButtonType> result = alert.showAndWait();
+		if(result.get() == ButtonType.OK) {
+			openNewWindow("Home.fxml", event);
+		}
 	}
 }
