@@ -35,12 +35,12 @@ public class The_Lucky_Gauntlet extends Application {
 	public void start(Stage stage) throws Exception{
 		String filename = "Pause";
 		
-		Parent root = FXMLLoader.load(getClass().getResource("Screens/Map.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Screens/Pause.fxml"));
 		Scene scene = new Scene(root);
 
 		stage.setScene(scene);
 		stage.setResizable(false);
-        stage.setTitle("Pause Menu");
+        stage.setTitle("The Lucky Gauntlet");
 		stage.show();
 	}
 
