@@ -73,7 +73,7 @@ public class PauseController implements Initializable {
 		partnerWeaponDurability.setProgress((float)partner.getWeapon().getDurability()/partner.getWeapon().getMaxDurability());
 	}
 	
-	private FXMLLoader openNewWindow(String fileName, ActionEvent e) throws IOException{
+	public FXMLLoader openNewWindow(String fileName, ActionEvent e) throws IOException{
 		// Getting the current Window
 		Stage currentStage = (Stage)((Node) e.getSource()).getScene().getWindow();
 
