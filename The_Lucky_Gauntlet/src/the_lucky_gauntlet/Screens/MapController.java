@@ -44,7 +44,7 @@ public class MapController implements Initializable{
 		lastFileName = fileName;
 	}
 	
-	@FXML private void openPreviousScreen(ActionEvent e) throws IOException {
+	@FXML public void openPreviousScreen(ActionEvent e) throws IOException {
 		openNewWindow(lastFileName, e);
 	}
 }
