@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="the_lucky_gauntlet.Screens.HomeController">
    <children>
       <VBox fx:id="Home" alignment="CENTER" layoutY="90.0" prefHeight="200.0" prefWidth="547.0" spacing="20.0" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
          <children>
@@ -16,12 +16,12 @@
                   <Font size="64.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" prefWidth="108.0" text="Play Game">
+            <Button mnemonicParsing="false" onAction="#openSetup" prefWidth="108.0" text="Play Game">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="107.0" text="Exit">
+            <Button mnemonicParsing="false" onAction="#exit" prefHeight="39.0" prefWidth="107.0" text="Exit">
                <font>
                   <Font size="18.0" />
                </font>
