@@ -42,7 +42,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="returnButton" alignment="CENTER" mnemonicParsing="false" prefWidth="750.0" text="Return To Game" textAlignment="CENTER">
+            <Button fx:id="returnButton" alignment="CENTER" mnemonicParsing="false" onAction="#openPreviousWindow" prefWidth="750.0" text="Return To Game" textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>
