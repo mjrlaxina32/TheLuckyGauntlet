@@ -23,3 +23,4 @@ public class MapController extends SuperController implements Initializable{
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {}
 }
+//TO DO: Relayout maps; change button grid into image grid
