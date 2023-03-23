@@ -9,14 +9,10 @@ import java.util.ResourceBundle;
 import javafx.fxml.*;
 
 // Components
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 // Alert Components
 import javafx.scene.control.Alert;
@@ -29,9 +25,7 @@ import javafx.event.ActionEvent;
 // Exceptions
 import java.io.IOException;
 
-
-
-public class PauseController implements Initializable {
+public class PauseController extends SuperController implements Initializable {
 	
 	@FXML ImageView mcPhoto, partnerPhoto, mcWeaponPhoto, partnerWeaponPhoto;
 	@FXML Text mcName, mcClass, mcAttack;
@@ -42,8 +36,6 @@ public class PauseController implements Initializable {
 	@FXML ProgressBar mcWeaponDurability;
 	@FXML Text partnerWeaponName, partnerWeaponClass, partnerWeaponAttack;
 	@FXML ProgressBar partnerWeaponDurability;
-	
-	Player mc, partner;
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -73,28 +65,11 @@ public class PauseController implements Initializable {
 		partnerWeaponDurability.setProgress((float)partner.getWeapon().getDurability()/partner.getWeapon().getMaxDurability());
 	}
 	
-	public FXMLLoader openNewWindow(String fileName, ActionEvent e) throws IOException{
-		// Getting the current Window
-		Stage currentStage = (Stage)((Node) e.getSource()).getScene().getWindow();
-
-		// Getting the next Screen
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fileName));
-		Parent root = loader.load();
-		Scene newScene = new Scene(root);
-
-		// Updating the screen
-		currentStage.hide();
-		currentStage.setScene(newScene);
-		currentStage.show();
-		
-		return loader;
-	}
-	
 	@FXML private void openMap(ActionEvent event) throws IOException {
 		FXMLLoader loader = openNewWindow("Map.fxml", event);
 		MapController MController = loader.getController();
 		
-		MController.updateLastScreen("Pause.fxml");
+		//MController.setLastScreen("Pause.fxml");
 	}
 	@FXML private void openMenu(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
