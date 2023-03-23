@@ -35,7 +35,7 @@ public class The_Lucky_Gauntlet extends Application {
 	public void start(Stage stage) throws Exception{
 		String filename = "Pause";
 		
-		Parent root = FXMLLoader.load(getClass().getResource("Screens/Pause.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Screens/Home.fxml"));
 		Scene scene = new Scene(root);
 
 		stage.setScene(scene);
