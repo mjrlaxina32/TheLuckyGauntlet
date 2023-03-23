@@ -19,7 +19,7 @@ import javafx.stage.Stage;
  *
  * @author Monique Jhoienyl
  */
-public class HomeController implements Initializable {
+public class HomeController extends SuperController implements Initializable {
 
     @FXML
     private VBox Home;
@@ -32,25 +32,8 @@ public class HomeController implements Initializable {
         // TODO
     }    
     
-    private FXMLLoader openNewWindow(String fileName, ActionEvent e) throws IOException{
-		// Getting the current Window
-		Stage currentStage = (Stage)((Node) e.getSource()).getScene().getWindow();
-
-		// Getting the next Screen
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fileName));
-		Parent root = loader.load();
-		Scene newScene = new Scene(root);
-
-		// Updating the screen
-		currentStage.hide();
-		currentStage.setScene(newScene);
-		currentStage.show();
-		
-		return loader;
-	}
-    
     @FXML public void openSetup(ActionEvent e) throws IOException {
-		openNewWindow("Pause.fxml",e); //TO CHANGE TO SET-UP SCREEN!!!!
+		openNewWindow("Prebattle.fxml",e); //TO CHANGE TO SET-UP SCREEN!!!!
     }
     
     @FXML public void exit(ActionEvent e) throws IOException {
