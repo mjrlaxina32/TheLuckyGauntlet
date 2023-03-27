@@ -46,7 +46,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
                <children>
-                  <Button fx:id="mcWeaponSelectButton" mnemonicParsing="false" onAction="#openWeaponSelect" prefHeight="60.0" prefWidth="80.0" text="Change Weapon" textAlignment="CENTER" wrapText="true">
+                  <Button fx:id="mcChangeWeapon" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Change Weapon" textAlignment="CENTER" wrapText="true">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </GridPane.margin>
@@ -54,7 +54,7 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Find New Weapon" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1">
+                  <Button fx:id="mcFindWeapon" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Find New Weapon" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </GridPane.margin>
@@ -62,7 +62,7 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Enhance Weapon" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
+                  <Button fx:id="mcEnhanceWeapon" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Enhance Weapon" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </GridPane.margin>
@@ -70,7 +70,7 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Repair Weapon" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="mcRepairWeapon" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Repair Weapon" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </GridPane.margin>
@@ -112,7 +112,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="partnerWeaponSelectButton" mnemonicParsing="false" onAction="#openWeaponSelect" prefHeight="60.0" prefWidth="80.0" text="Change Weapon" textAlignment="CENTER" wrapText="true">
+                  <Button fx:id="partnerChangeWeapon" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Change Weapon" textAlignment="CENTER" wrapText="true">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </GridPane.margin>
@@ -120,7 +120,7 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Find New Weapon" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1">
+                  <Button fx:id="partnerFindWeapon" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Find New Weapon" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </GridPane.margin>
@@ -128,7 +128,7 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Enhance Weapon" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
+                  <Button fx:id="partnerEnhanceWeapon" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Enhance Weapon" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </GridPane.margin>
@@ -136,7 +136,7 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Repair Weapon" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="partnerRepairWeapon" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Repair Weapon" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </GridPane.margin>
@@ -155,7 +155,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="actionText" strokeType="OUTSIDE" strokeWidth="0.0" text="*Some text here about what the player did*" />
+            <Text fx:id="actionText" strokeType="OUTSIDE" strokeWidth="0.0" text="*Some text here about what the player did*" textAlignment="CENTER" />
          </children>
       </HBox>
    </bottom>
@@ -182,7 +182,7 @@
                   <Insets left="50.0" right="50.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Rest">
+            <Button fx:id="rest" mnemonicParsing="false" onAction="#rest" prefHeight="60.0" prefWidth="150.0" text="Rest">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -190,7 +190,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" text="Train">
+            <Button fx:id="train" mnemonicParsing="false" onAction="#train" prefHeight="60.0" prefWidth="150.0" text="Train">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
