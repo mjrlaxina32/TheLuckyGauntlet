@@ -7,18 +7,24 @@ package the_lucky_gauntlet.Screens;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
  *
  * @author MUON
  */
-public class WeaponSelectController implements Initializable {
+public class WeaponSelectController extends SuperController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML Text weaponSelectATK, weaponSelectDurabilityText;
+    @FXML ProgressBar weaponSelectDurabilityBar;
+    @FXML Button prevWeaponButton, nextWeaponButton, equipWeaponButton, returnButton;
+    @FXML ImageView weaponSelectImage;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
