@@ -11,7 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.Background;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -19,22 +20,13 @@ import javafx.scene.layout.VBox;
  *
  * @author Athena Kimwell
  */
-public class LoseController extends SuperController implements Initializable {
-    @FXML VBox BoxLayout;
+public class WinController extends SuperController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {}
 
-    @FXML private void openMenu(ActionEvent event) throws IOException {
-        openNewWindow("Home.fxml", event);		
-    }
-
-    @FXML private void setBlackBG(Event event)throws IOException{
-        BoxLayout.setStyle("-fx-background-color: black");
+    @FXML private void openMap(ActionEvent event) throws IOException {
+        openNewWindow("Map.fxml", event);		
     }
     
-    @FXML private void setWhiteBG(Event event)throws IOException{
-        BoxLayout.setStyle("-fx-background-color: white");
-        //sets bg to white and not the prev/default bg color
-    }
 }
