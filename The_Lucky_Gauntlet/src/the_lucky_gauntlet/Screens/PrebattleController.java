@@ -25,7 +25,6 @@ public class PrebattleController extends SuperController implements Initializabl
 	@FXML ImageView mcImage, partnerImage;
 	
 	private int actions;
-	Player mc, partner;
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
