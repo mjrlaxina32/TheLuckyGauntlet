@@ -20,10 +20,11 @@ import javafx.event.ActionEvent;
 
 // Exceptions
 import java.io.IOException;
+import the_lucky_gauntlet.Exceptions.InvalidOrderException;
 
 public class SuperController {
-	public Player mc = Player.getMC();
-	public Player partner = mc.getPartner();
+	public static Player mc = Player.getMC();
+	public static Player partner = mc.getPartner();
 	
 	public static ArrayList<Stage> stageHierarchy = new ArrayList<Stage>();
 	
@@ -58,5 +59,12 @@ public class SuperController {
 		previousStage.show();
 		
 		stageHierarchy.remove(currentStage);
+	}
+	
+	public static void resetMC (int orderIndex, String n) throws InvalidOrderException {		
+		mc = The_Lucky_Gauntlet.PlayerCreation(orderIndex, n, "mc");
+	}
+	public static void resetPartner (int orderIndex, String n) throws InvalidOrderException {		
+		partner = The_Lucky_Gauntlet.PlayerCreation(orderIndex, n, "partner");
 	}
 }
