@@ -38,10 +38,7 @@ public class PauseController extends SuperController implements Initializable {
 	@FXML ProgressBar partnerWeaponDurability;
 	
 	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		mc = Player.getMC();
-		partner = mc.getPartner();
-		
+	public void initialize(URL url, ResourceBundle rb) {		
 		mcName.setText(mc.getName());
 		mcClass.setText(mc.getClass().getSimpleName().substring(2));
 		mcAttack.setText("ATK: " + mc.getAttack());
