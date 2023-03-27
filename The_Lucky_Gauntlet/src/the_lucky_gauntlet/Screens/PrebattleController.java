@@ -12,10 +12,8 @@ import javafx.fxml.*;
 // Components
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.*;
 
 // Exception
 import java.io.IOException;
@@ -23,6 +21,7 @@ import java.io.IOException;
 public class PrebattleController extends SuperController implements Initializable {
 	
 	@FXML Text actionText, movesLeftText, mcName, partnerName;
+        @FXML Button mcWeaponSelectButton, partnerWeaponSelectButton;
 	@FXML ImageView mcImage, partnerImage;
 	
 	private int actions;
@@ -45,4 +44,9 @@ public class PrebattleController extends SuperController implements Initializabl
 		FXMLLoader loader = openNewWindow("Pause.fxml", e);
 		PauseController PController = loader.getController();
 	}
+        
+        @FXML void openWeaponSelect(ActionEvent e) throws IOException{
+                FXMLLoader loader = openNewWindow("WeaponSelect.fxml", e);
+		WeaponSelectController WSController = loader.getController();
+        }
 }
