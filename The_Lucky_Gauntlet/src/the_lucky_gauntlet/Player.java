@@ -3,17 +3,12 @@ package the_lucky_gauntlet;
 import the_lucky_gauntlet.Exceptions.NoEnergyException;
 import the_lucky_gauntlet.Exceptions.InaccessibleRoomException;
 
-import java.util.Random;
-import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Player extends Character {
 	private Player partner;
-	protected String playerType; // Registers if the player is the MC or Partner
-	private static ArrayList<Player> players = new ArrayList<Player>(); // So that we can freely access the player/partner in any file
-
-	public Scanner sc = new Scanner(System.in);
-	public Random rand = new Random();
+	protected String playerType;
+	private static ArrayList<Player> players = new ArrayList<Player>();
 
 	public Player(String newName, String newPlayerType) {
 		super(newName);
@@ -44,14 +39,8 @@ public class Player extends Character {
 
 	// Peaceful Room Actions
 	public void train() throws NoEnergyException {
-		try {
-			this.useEnergy(25);
-			this.attack += 5;
-			System.out.printf("%s used 25 energy to train. %s's attack increased by 10 and is now %d\n", this.getName(), this.getName(), this.attack);
-		}
-		catch (NoEnergyException NEE) {
-			this.rest();
-		}
+		this.useEnergy(25);
+		this.attack += 5;
 	}
 
 	public void rest() {
@@ -84,7 +73,8 @@ public class Player extends Character {
 		int targetIndex = Integer.parseInt(sc.nextLine()) - 1;
 		try {
 			target = targets.get(targetIndex);
-		} catch (IndexOutOfBoundsException e) {
+		}
+		catch (IndexOutOfBoundsException e) {
 			System.out.printf("%d is not a valid input. Note: Inputs are the ones " +
 					"on the left of the hyphen. This means that enemy 2 " +
 					"can have an input of 1!\n", targetIndex);
