@@ -60,11 +60,9 @@ public class PrebattleController extends SuperController implements Initializabl
 	@FXML void openPause(ActionEvent e) throws IOException{
 		openNewWindow("Pause.fxml", e);
 	}
-	
 	@FXML void openWeaponSelect(ActionEvent e) throws IOException{
-                FXMLLoader loader = openNewWindow("WeaponSelect.fxml", e);
-		WeaponSelectController WSController = loader.getController();
-        }
+		openNewWindow("WeaponSelect.fxml", e);
+	}
 	
 	@FXML void rest(ActionEvent e) throws IOException{
 		int mcInitialEnergy, mcFinalEnergy, partnerInitialEnergy, partnerFinalEnergy;
