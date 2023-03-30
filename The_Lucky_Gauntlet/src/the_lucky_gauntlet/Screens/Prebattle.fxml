@@ -46,8 +46,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
                <children>
-                  <Button fx:id="mcChangeWeapon" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Change Weapon" textAlignment="CENTER" wrapText="true">
-                     <GridPane.margin>
+<Button fx:id="mcChangeWeapon" mnemonicParsing="false" onAction="#openWeaponSelect" prefHeight="60.0" prefWidth="80.0" text="Change Weapon" textAlignment="CENTER" wrapText="true">                     <GridPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </GridPane.margin>
                      <font>
@@ -112,8 +111,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="partnerChangeWeapon" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Change Weapon" textAlignment="CENTER" wrapText="true">
-                     <GridPane.margin>
+<Button fx:id="partnerChangeWeapon" mnemonicParsing="false" onAction="#openWeaponSelect" prefHeight="60.0" prefWidth="80.0" text="Change Weapon" textAlignment="CENTER" wrapText="true">                     <GridPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </GridPane.margin>
                      <font>
