@@ -22,5 +22,11 @@ public class MapController extends SuperController implements Initializable{
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {}
+	
+	@FXML void openBattle(ActionEvent e) throws IOException{
+		openNewWindow("Battle.fxml", e);
+	}
+	@FXML void openPrebattle(ActionEvent e) throws IOException{
+		openNewWindow("Prebattle.fxml", e);
+	}
 }
-//TO DO: Relayout maps; change button grid into image grid
