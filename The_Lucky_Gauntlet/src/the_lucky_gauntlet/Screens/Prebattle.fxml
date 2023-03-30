@@ -46,7 +46,8 @@
                   <Insets top="10.0" />
                </VBox.margin>
                <children>
-<Button fx:id="mcChangeWeapon" mnemonicParsing="false" onAction="#openWeaponSelect" prefHeight="60.0" prefWidth="80.0" text="Change Weapon" textAlignment="CENTER" wrapText="true">                     <GridPane.margin>
+                  <Button fx:id="mcChangeWeapon" mnemonicParsing="false" onAction="#openWeaponSelect" prefHeight="60.0" prefWidth="80.0" text="Change Weapon" textAlignment="CENTER" wrapText="true">
+                     <GridPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </GridPane.margin>
                      <font>
@@ -111,7 +112,8 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-<Button fx:id="partnerChangeWeapon" mnemonicParsing="false" onAction="#openWeaponSelect" prefHeight="60.0" prefWidth="80.0" text="Change Weapon" textAlignment="CENTER" wrapText="true">                     <GridPane.margin>
+                  <Button fx:id="partnerChangeWeapon" mnemonicParsing="false" onAction="#openWeaponSelect" prefHeight="60.0" prefWidth="80.0" text="Change Weapon" textAlignment="CENTER" wrapText="true">
+                     <GridPane.margin>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </GridPane.margin>
                      <font>
@@ -196,7 +198,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="110.0" text="Leave Room">
+            <Button mnemonicParsing="false" onAction="#openPreviousWindow" prefHeight="20.0" prefWidth="110.0" text="Leave Room">
                <font>
                   <Font size="10.0" />
                </font>
