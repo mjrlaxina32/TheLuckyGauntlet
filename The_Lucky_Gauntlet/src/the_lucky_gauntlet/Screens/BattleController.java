@@ -4,16 +4,23 @@
  */
 package the_lucky_gauntlet.Screens;
 
+// Java-FX Set-up
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
+
+// Events
+import javafx.event.ActionEvent;
+
+// Exceptions
+import java.io.IOException;
 
 /**
  * FXML Controller class
  *
  * @author Athena Kimwell
  */
-public class BattleController implements Initializable {
+public class BattleController extends SuperController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -23,4 +30,8 @@ public class BattleController implements Initializable {
         // TODO
     }    
     
+	@FXML void openPause(ActionEvent e) throws IOException{
+		openNewWindow("Pause.fxml", e);
+	}
 }
+
