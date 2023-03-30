@@ -33,7 +33,7 @@ public class HomeController extends SuperController implements Initializable {
     }    
     
     @FXML public void openSetup(ActionEvent e) throws IOException {
-		openNewWindow("Prebattle.fxml",e); //TO CHANGE TO SET-UP SCREEN!!!!
+		openNewWindow("Setup.fxml",e); //TO CHANGE TO SET-UP SCREEN!!!!
     }
     
     @FXML public void exit(ActionEvent e) throws IOException {
