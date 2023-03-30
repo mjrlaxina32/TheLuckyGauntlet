@@ -54,13 +54,13 @@
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="4" />
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="85.0" prefWidth="50.0" text="✨" GridPane.columnIndex="2" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openPrebattle" prefHeight="85.0" prefWidth="50.0" text="✨" GridPane.columnIndex="2" />
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="1" />
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" prefHeight="219.0" prefWidth="76.0" text="Boss">
+            <Button mnemonicParsing="false" onAction="#openBattle" prefHeight="219.0" prefWidth="76.0" text="Boss">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
