@@ -6,18 +6,20 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javafx.scene.image.Image;
+
 public abstract class Character {
-	private String name;
+	private String name, filename;
 	protected int health, maxHealth, attack, energy, maxEnergy;
 	protected Character target;
 	protected Weapon weapon;
 	protected Room currentRoom;
 	protected ArrayList<String> effects = new ArrayList<String>();
 
-	Random rand = new Random();
-	Scanner sc = new Scanner(System.in);
+	public Random rand = new Random();
+	public Scanner sc = new Scanner(System.in);
 
-	public Character(String n) {
+	public Character(String n, String f) {
 		name = n;
 		maxHealth = rand.nextInt(25) + 25;
 		health = maxHealth;
@@ -25,9 +27,9 @@ public abstract class Character {
 		maxEnergy = rand.nextInt(100) + 100;
 		energy = maxEnergy;
 
-		weapon = new Weapon("Fists", 0, 1000);
+		weapon = new Weapon("Fists", "Generic",0, 1000);
 
-		this.showStats();
+		// this.showStats();
 	}
 
 	// Getter Methods
@@ -61,7 +63,14 @@ public abstract class Character {
 	public Weapon getWeapon() {
 		return weapon;
 	}
-	
+	public String getImgFileName() {
+		return filename;
+	}
+	public Image getImg() {
+		Image classImg = new Image(getClass().getResourceAsStream("@../../Sprites/" + this.getImgFileName()));
+		return classImg;
+	}
+
 	// Base Value Re-randomization
 	public void resetAtkValue(int randFactor) {
 		int baseFactor = 20 - randFactor;
@@ -77,7 +86,8 @@ public abstract class Character {
 		maxEnergy = rand.nextInt(randFactor) + baseFactor;
 		energy = maxEnergy;
 	}
-
+	
+	
 	// Utility methods
 	public void takeDamage(int dmg) {
 		health -= dmg;
@@ -86,20 +96,17 @@ public abstract class Character {
 			System.out.println(name + " has died!");
 		}
 	}
-
 	public void heal(int amount) {
 		health += amount;
 		if (health > maxHealth)
 			health = maxHealth;
 	}
-
 	public void useEnergy(int amount) throws NoEnergyException{
 		if (amount > energy) {
 			throw new NoEnergyException(this);
 		}
 		energy -= amount;
 	}
-
 	public void gainEnergy(int amount) {
 		energy += amount;
 		if (energy > maxEnergy)
