@@ -5,9 +5,11 @@ import the_lucky_gauntlet.Exceptions.NoEnergyException;
 
 public class P_Archer extends Player {
 	public P_Archer(String n, String t) {
-		super(n, t);
+		super(n, t, "Archer.png");
 		System.out.println("Order: Archer");
-		Weapon bow = new Weapon("bow", 3, 50);
+		Weapon bow = new Weapon("bow","Archer", 3, 50);
+		this.gainWeapon(bow);
+		weapon = bow;
 	}
 
 	public void useSkill() {
