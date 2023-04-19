@@ -3,11 +3,11 @@ package the_lucky_gauntlet.Orders;
 import the_lucky_gauntlet.*;
 import the_lucky_gauntlet.Exceptions.NoEnergyException;
 
-public class P_Rouge extends Player{
-	public P_Rouge(String n, String t){
-		super(n, t);
+public class P_Rogue extends Player{
+	public P_Rogue(String n, String t){
+		super(n, t, "Rogue.png");
 		System.out.println("Order: Rouge");
-   		Weapon pistol = new Weapon("pistol", 7, 60);
+   		Weapon pistol = new Weapon("pistol", "Rogue",7, 60);
 		weapon = pistol;
 	}
 
