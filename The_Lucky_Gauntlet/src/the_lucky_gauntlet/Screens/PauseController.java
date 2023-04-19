@@ -2,6 +2,7 @@ package the_lucky_gauntlet.Screens;
 
 // Utility
 import the_lucky_gauntlet.*;
+import java.io.File;
 
 // JavaFX Set-up
 import java.net.URL;
@@ -13,6 +14,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 // Alert Components
 import javafx.scene.control.Alert;
@@ -52,21 +54,23 @@ public class PauseController extends SuperController implements Initializable {
 		partnerEnergy.setProgress((float)partner.getEnergy()/partner.getMaxEnergy());
 		
 		mcWeaponName.setText(mc.getWeapon().getName());
-		mcWeaponClass.setText("Class"); // We have't set-up class specific weapons yet
+		mcWeaponClass.setText(mc.getWeapon().getOrder()); // We have't set-up class specific weapons yet
 		mcWeaponAttack.setText("ATK Bonus: " + mc.getWeapon().getAtkBonus());
 		mcWeaponDurability.setProgress((float)mc.getWeapon().getDurability() /mc.getWeapon().getMaxDurability());
 		
 		partnerWeaponName.setText(partner.getWeapon().getName());
-		partnerWeaponClass.setText("Class"); // We have't set-up class specific weapons yet
+		partnerWeaponClass.setText(partner.getWeapon().getOrder());
 		partnerWeaponAttack.setText("ATK Bonus: " + partner.getWeapon().getAtkBonus());
 		partnerWeaponDurability.setProgress((float)partner.getWeapon().getDurability()/partner.getWeapon().getMaxDurability());
+		
+		/*Image photo = new Image(getClass().getResourceAsStream("@../Rogue.png"));
+		mcPhoto.setImage(photo);
+		partnerPhoto.setImage(partner.getImg());*/
 	}
 	
 	@FXML private void openMap(ActionEvent event) throws IOException {
 		FXMLLoader loader = openNewWindow("Map.fxml", event);
 		MapController MController = loader.getController();
-		
-		//MController.setLastScreen("Pause.fxml");
 	}
 	@FXML private void openMenu(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
