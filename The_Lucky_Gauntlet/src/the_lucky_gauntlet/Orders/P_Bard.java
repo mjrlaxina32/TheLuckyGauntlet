@@ -5,10 +5,10 @@ import the_lucky_gauntlet.Exceptions.NoEnergyException;
 
 public class P_Bard extends Player{
 	public P_Bard(String n, String t){
-		super(n, t);
+		super(n, t, "Bard.png");
 		System.out.println("Order: Bard");
 		this.resetAtkValue(5);
-		Weapon kazoo = new Weapon("kazoo", 5, 50);
+		Weapon kazoo = new Weapon("kazoo", "Bard", 5, 50);
 		weapon = kazoo;
 	}
 
