@@ -5,10 +5,10 @@ import the_lucky_gauntlet.Exceptions.NoEnergyException;
 
 public class P_Cleric extends Player{
 	public P_Cleric(String n, String t){
-		super(n, t);
+		super(n, t, "Cleric.png");
 		System.out.println("Order: Cleric");
 		this.resetHealthValue(5);
-		Weapon staff = new Weapon("staff", 6, 50);
+		Weapon staff = new Weapon("staff", "Cleric", 6, 50);
 		weapon = staff;
 	}
 
