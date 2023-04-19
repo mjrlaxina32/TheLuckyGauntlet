@@ -5,11 +5,11 @@ import the_lucky_gauntlet.Exceptions.NoEnergyException;
 
 public class P_Knight extends Player{
 	public P_Knight(String n, String t){
-		super(n,t);
+		super(n,t,"Knight.png");
 		System.out.println("Order: Knight");
 		this.resetHealthValue(20);
 		this.resetHealthValue(8);
-		Weapon sword = new Weapon("sword", 6, 50);
+		Weapon sword = new Weapon("sword", "Knight", 6, 50);
 		weapon = sword;
 	}
 	public void useSkill() {
