@@ -25,7 +25,7 @@ public class The_Lucky_Gauntlet extends Application {
 			case 5:
 				return (new P_Mage(n, type));
 			case 6:
-				return (new P_Rouge(n, type));
+				return (new P_Rogue(n, type));
 			default:
 				throw new InvalidOrderException("That Order does not exist.");
 		}
