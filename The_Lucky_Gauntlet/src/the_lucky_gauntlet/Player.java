@@ -8,10 +8,11 @@ import java.util.ArrayList;
 public class Player extends Character {
 	private Player partner;
 	protected String playerType;
+	private ArrayList<Weapon> weaponList = new ArrayList<Weapon>();
 	private static ArrayList<Player> players = new ArrayList<Player>();
 
-	public Player(String newName, String newPlayerType) {
-		super(newName);
+	public Player(String newName, String newPlayerType, String imageFilename) {
+		super(newName, imageFilename);
 		playerType = newPlayerType;
 		players.add(this);
 	}
@@ -47,7 +48,7 @@ public class Player extends Character {
 		this.gainEnergy(150);
 		partner.gainEnergy(150);
 		System.out.printf("%s and %s took a long rest."
-				+ " Their energy went up by 150 and they now have energies of %d and %d",
+				+ " Their energy went up by 150 and they now have energies of %d and %d\n",
 				this.getName(), partner.getName(), energy, partner.energy);
 	}
 
@@ -55,7 +56,23 @@ public class Player extends Character {
 	public void useSkill() {
 		System.out.println("Generic Skill Text 1");
 	} // Overrided by the different classes
-
+	public void attack() {
+		if(this.getWeapon().getOrder().equals(this.getClass().getSimpleName().substring(2))) {
+			try {
+				this.useEnergy(30);
+				int totalDamage = attack + weapon.getAtkBonus();
+				System.out.printf("%s used %d energy to attack %s and dealt %d damage!\n", this.getName(), 20, target.getName(),	totalDamage);
+				target.takeDamage(totalDamage);
+			}
+		catch(NoEnergyException NEE) {
+			this.stall();
+		}
+		}
+		else {
+			super.attack();
+		}
+	}
+	
 	public void stall() {
 		System.out.printf("%s and %s rested and both regained 50 energy!\n", this.getName(),
 				partner.getName());
@@ -105,14 +122,20 @@ public class Player extends Character {
 		}
 	}
 
+	public void gainWeapon(Weapon w) {
+		weaponList.add(w);
+	}
+	
 	// Maybe should be limited to treasure rooms
 	public void newWeapon() {
+		String[] orders = {"Archer", "Bard", "Cleric", "Knight", "Mage", "Rogue"};
+		
 		if (rand.nextInt(5) > 3) {
-			Weapon findings = new Weapon("Hello", rand.nextInt(7) + 3, rand.nextInt(30) + 20);
+			Weapon findings = new Weapon("Hello", orders[rand.nextInt(6)], rand.nextInt(7) + 3, rand.nextInt(30) + 20);
 			System.out.print("Would you like to keep the weapon \"" + findings.getName() + "\"? (y/n)");
 			String choice = sc.nextLine();
 			if (choice.equals("y"))
-				this.weapon = findings;
+				gainWeapon(findings);
 		}
 	}
 }
