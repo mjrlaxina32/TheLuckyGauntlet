@@ -5,10 +5,18 @@ import the_lucky_gauntlet.Exceptions.BeyondRangeException;
 import java.util.Random;
 
 public class Weapon {
-	private String name;
+	private String name, order;
 	protected int atkBonus, durability, maxDurability;
 	private Random rand = new Random();
 
+	public Weapon(String n, String o, int aB, int mD) {
+		name = n;
+		order = o;
+		atkBonus = aB;
+		maxDurability = mD;
+		durability = maxDurability;
+	}
+	
 	public String getName (){
 		return name;
 	}
@@ -21,13 +29,10 @@ public class Weapon {
 	public int getMaxDurability (){
 		return maxDurability;
 	}
-	
-	public Weapon(String n, int aB, int mD) {
-		name = n;
-		atkBonus = aB;
-		maxDurability = mD;
-		durability = maxDurability;
+	public String getOrder (){
+		return order;
 	}
+	
 	
 	public void enhance() {
 		atkBonus += rand.nextInt(5);
@@ -41,9 +46,9 @@ public class Weapon {
 		}
 	}
 	public void weaken() {
-		if(durability != 0){
-			durability -= 5;
-		}
+		durability -= 5;
+		if(durability <= 0)
+			durability = 0;
 	}
 	public void destroy() {
 		//How do we destroy a weapon?
