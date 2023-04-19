@@ -7,10 +7,10 @@ import the_lucky_gauntlet.Exceptions.NoEnergyException;
 
 public class P_Mage extends Player {
 	public P_Mage(String n, String t) {
-		super(n, t);
+		super(n, t,"Mage.png");
 		this.resetEnergyValue(40);
 		System.out.println("Order: Mage");
-		Weapon staff = new Weapon("staff", 5, 50);
+		Weapon staff = new Weapon("staff","Mage", 5, 50);
 		weapon = staff;
 	}
 
