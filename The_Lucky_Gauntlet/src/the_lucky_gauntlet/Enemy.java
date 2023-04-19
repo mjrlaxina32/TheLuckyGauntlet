@@ -1,12 +1,10 @@
 package the_lucky_gauntlet;
 
-import the_lucky_gauntlet.Exceptions.NoEnergyException;
-
 import java.util.ArrayList;
 
 public class Enemy extends Character {
 	public Enemy(String newName) {
-		super(newName);
+		super(newName, "Enemy.png");
 		attack = rand.nextInt(5);
 	}
 
