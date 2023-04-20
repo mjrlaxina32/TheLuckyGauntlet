@@ -1,6 +1,9 @@
 package the_lucky_gauntlet.Rooms;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import the_lucky_gauntlet.*;
+import the_lucky_gauntlet.Exceptions.NoEnergyException;
 
 public class R_Peaceful extends Room{
 	private int actionCount;
@@ -30,13 +33,27 @@ public class R_Peaceful extends Room{
 		else if(actionCount > 0) {
 			switch(action){
 				case 2:
-					mc.train();
+                            {
+                                try {
+                                    mc.train();
+                                } catch (NoEnergyException ex) {
+                                    System.out.println("No more energy");
+                                }
+                            }
 					actionCount -= 1;
 					break;
+
 				case 3:
-					mc.getPartner().train();
+                            {
+                                try {
+                                    mc.getPartner().train();
+                                } catch (NoEnergyException ex) {
+                                    System.out.println("No more energy");
+                                }
+                            }
 					actionCount -= 1;
 					break;
+
 				case 4:
 					mc.rest();
 					actionCount -= 1;
