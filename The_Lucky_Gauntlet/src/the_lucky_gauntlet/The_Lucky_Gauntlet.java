@@ -46,7 +46,7 @@ public class The_Lucky_Gauntlet extends Application {
 
 	public static void main(String[] args) {
 		Player mc = new P_Archer("Henry", "mc");
-		Player partner = new P_Rouge("Joe", "partner");
+		Player partner = new P_Rogue("Joe", "partner");
 		
 		mc.setPartner(partner);
 		partner.setPartner(mc);
