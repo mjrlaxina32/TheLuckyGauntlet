@@ -63,9 +63,8 @@ public class PauseController extends SuperController implements Initializable {
 		partnerWeaponAttack.setText("ATK Bonus: " + partner.getWeapon().getAtkBonus());
 		partnerWeaponDurability.setProgress((float)partner.getWeapon().getDurability()/partner.getWeapon().getMaxDurability());
 		
-		/*Image photo = new Image(getClass().getResourceAsStream("@../Rogue.png"));
-		mcPhoto.setImage(photo);
-		partnerPhoto.setImage(partner.getImg());*/
+		mcPhoto.setImage(mc.getImg());
+		partnerPhoto.setImage(partner.getImg());
 	}
 	
 	@FXML private void openMap(ActionEvent event) throws IOException {
