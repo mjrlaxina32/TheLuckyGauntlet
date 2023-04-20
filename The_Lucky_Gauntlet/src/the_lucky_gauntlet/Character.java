@@ -21,6 +21,7 @@ public abstract class Character {
 
 	public Character(String n, String f) {
 		name = n;
+		filename = f;
 		maxHealth = rand.nextInt(25) + 25;
 		health = maxHealth;
 		attack = rand.nextInt(10) + 10;
@@ -67,7 +68,7 @@ public abstract class Character {
 		return filename;
 	}
 	public Image getImg() {
-		Image classImg = new Image(getClass().getResourceAsStream("@../../Sprites/" + this.getImgFileName()));
+		Image classImg = new Image("/the_lucky_gauntlet/Sprites/" + this.getImgFileName());
 		return classImg;
 	}
 
