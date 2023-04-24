@@ -36,6 +36,8 @@ public class PrebattleController extends SuperController implements Initializabl
 		movesLeftText.setText("Moves Left: " + actions);
 		mcName.setText(mc.getName());
 		partnerName.setText(partner.getName());
+                mcImage.setImage(mc.getImg());
+		partnerImage.setImage(partner.getImg());
 	}	
 	
 	private void performAction(String textOutput) {
