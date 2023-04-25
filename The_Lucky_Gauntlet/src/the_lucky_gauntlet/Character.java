@@ -13,7 +13,6 @@ public abstract class Character {
 	protected int health, maxHealth, attack, energy, maxEnergy;
 	protected Character target;
 	protected Weapon weapon;
-	protected Room currentRoom;
 	protected ArrayList<String> effects = new ArrayList<String>();
 
 	public Random rand = new Random();
@@ -57,9 +56,6 @@ public abstract class Character {
 	}
 	public String getTargetName() {
 		return target.name;
-	}
-	public Room getCurrentRoom() {
-		return this.currentRoom;
 	}
 	public Weapon getWeapon() {
 		return weapon;
@@ -150,9 +146,4 @@ public abstract class Character {
 	}
 
 	public abstract void useSkill();
-
-	// Current Room Handling
-	public void updateRoom(Room r) {
-		currentRoom = r;
-	}
 }
