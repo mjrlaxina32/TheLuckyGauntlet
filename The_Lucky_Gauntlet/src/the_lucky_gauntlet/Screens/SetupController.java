@@ -93,7 +93,7 @@ public class SetupController extends SuperController implements Initializable {
 			rollStats();
 		}
 		else {
-			openNewWindow("Prebattle.fxml", e);
+			openNewWindow("Map.fxml", e);
 		}
 	}
 }
