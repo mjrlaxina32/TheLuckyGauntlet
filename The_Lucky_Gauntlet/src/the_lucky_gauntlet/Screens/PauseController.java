@@ -41,30 +41,30 @@ public class PauseController extends SuperController implements Initializable {
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {		
-		mcName.setText(mc.getName());
-		mcClass.setText(mc.getClass().getSimpleName().substring(2));
-		mcAttack.setText("ATK: " + mc.getAttack());
-		mcHealth.setProgress((float)mc.getHealth()/mc.getMaxHealth());
-		mcEnergy.setProgress((float)mc.getEnergy()/mc.getMaxEnergy());
+		mcName.setText(tlg.mc.getName());
+		mcClass.setText(tlg.mc.getClass().getSimpleName().substring(2));
+		mcAttack.setText("ATK: " + tlg.mc.getAttack());
+		mcHealth.setProgress((float)tlg.mc.getHealth()/tlg.mc.getMaxHealth());
+		mcEnergy.setProgress((float)tlg.mc.getEnergy()/tlg.mc.getMaxEnergy());
 		
-		partnerName.setText(partner.getName());
-		partnerClass.setText(partner.getClass().getSimpleName().substring(2));
-		partnerAttack.setText("ATK: " + partner.getAttack());
-		partnerHealth.setProgress((float)partner.getHealth()/partner.getMaxHealth());
-		partnerEnergy.setProgress((float)partner.getEnergy()/partner.getMaxEnergy());
+		partnerName.setText(tlg.partner.getName());
+		partnerClass.setText(tlg.partner.getClass().getSimpleName().substring(2));
+		partnerAttack.setText("ATK: " + tlg.partner.getAttack());
+		partnerHealth.setProgress((float)tlg.partner.getHealth()/tlg.partner.getMaxHealth());
+		partnerEnergy.setProgress((float)tlg.partner.getEnergy()/tlg.partner.getMaxEnergy());
 		
-		mcWeaponName.setText(mc.getWeapon().getName());
-		mcWeaponClass.setText(mc.getWeapon().getOrder()); // We have't set-up class specific weapons yet
-		mcWeaponAttack.setText("ATK Bonus: " + mc.getWeapon().getAtkBonus());
-		mcWeaponDurability.setProgress((float)mc.getWeapon().getDurability() /mc.getWeapon().getMaxDurability());
+		mcWeaponName.setText(tlg.mc.getWeapon().getName());
+		mcWeaponClass.setText(tlg.mc.getWeapon().getOrder()); // We have't set-up class specific weapons yet
+		mcWeaponAttack.setText("ATK Bonus: " + tlg.mc.getWeapon().getAtkBonus());
+		mcWeaponDurability.setProgress((float)tlg.mc.getWeapon().getDurability() /tlg.mc.getWeapon().getMaxDurability());
 		
-		partnerWeaponName.setText(partner.getWeapon().getName());
-		partnerWeaponClass.setText(partner.getWeapon().getOrder());
-		partnerWeaponAttack.setText("ATK Bonus: " + partner.getWeapon().getAtkBonus());
-		partnerWeaponDurability.setProgress((float)partner.getWeapon().getDurability()/partner.getWeapon().getMaxDurability());
+		partnerWeaponName.setText(tlg.partner.getWeapon().getName());
+		partnerWeaponClass.setText(tlg.partner.getWeapon().getOrder());
+		partnerWeaponAttack.setText("ATK Bonus: " + tlg.partner.getWeapon().getAtkBonus());
+		partnerWeaponDurability.setProgress((float)tlg.partner.getWeapon().getDurability()/tlg.partner.getWeapon().getMaxDurability());
 		
-		mcPhoto.setImage(mc.getImg());
-		partnerPhoto.setImage(partner.getImg());
+		mcPhoto.setImage(tlg.mc.getImg());
+		partnerPhoto.setImage(tlg.partner.getImg());
 	}
 	
 	@FXML private void openMap(ActionEvent event) throws IOException {
