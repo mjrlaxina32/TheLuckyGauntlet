@@ -21,17 +21,24 @@ import java.io.IOException;
  * @author Athena Kimwell
  */
 public class BattleController extends SuperController implements Initializable {
+	private R_Battle currentRoom;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+	/**
+	 * Initializes the controller class.
+	 */
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		// TODO
+	}    
+
 	@FXML void openPause(ActionEvent e) throws IOException{
 		openNewWindow("Pause.fxml", e);
 	}
+	
+	public void enterRoom(R_Battle newRoom) {
+		currentRoom = newRoom;
+	}
+	public R_Battle getCurrentRoom() {
+		return currentRoom;
+	}
 }
-
