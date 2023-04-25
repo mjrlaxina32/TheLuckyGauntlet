@@ -29,14 +29,6 @@ public class Player extends Character {
 	public String getPartnerName() {
 		return partner.getName();
 	}
-	public static Player getMC() throws IllegalArgumentException {
-		for(Player ply : players) {
-			if(ply.playerType.equals("mc")) {
-				return ply;
-			}
-		}
-		throw new IllegalArgumentException();
-	}
 
 	// Peaceful Room Actions
 	public void train() throws NoEnergyException {
@@ -64,9 +56,9 @@ public class Player extends Character {
 				System.out.printf("%s used %d energy to attack %s and dealt %d damage!\n", this.getName(), 20, target.getName(),	totalDamage);
 				target.takeDamage(totalDamage);
 			}
-		catch(NoEnergyException NEE) {
-			this.stall();
-		}
+			catch(NoEnergyException NEE) {
+				this.stall();
+			}
 		}
 		else {
 			super.attack();
@@ -98,30 +90,7 @@ public class Player extends Character {
 		}
 	}
 
-	// Other Actions
-	public void action() {
-		currentRoom.performAction(this);
-	}
-
-	public void changeRoom(Room newRoom) {
-		System.out.println("You entered the " + newRoom.getName());
-
-		if (currentRoom != null) {
-			currentRoom.leaveRoom(this);
-			currentRoom.leaveRoom(partner);
-		}
-
-		this.updateRoom(newRoom);
-		this.getPartner().updateRoom(newRoom);
-
-		try {
-			currentRoom.enterRoom(this);
-			currentRoom.enterRoom(partner);
-		} catch (InaccessibleRoomException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-
+	// Weapon Regulation
 	public void gainWeapon(Weapon w) {
 		weaponList.add(w);
 	}
