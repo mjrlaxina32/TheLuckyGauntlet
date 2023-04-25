@@ -1,7 +1,5 @@
 package the_lucky_gauntlet;
 
-import the_lucky_gauntlet.Exceptions.BeyondRangeException;
-
 import java.util.Random;
 
 public class Weapon {
