@@ -2,7 +2,7 @@ package the_lucky_gauntlet.Screens;
 
 // Utility
 import java.util.Random;
-import the_lucky_gauntlet.The_Lucky_Gauntlet;
+import the_lucky_gauntlet.tlg;
 import the_lucky_gauntlet.Screens.*;
 
 // Java-fx Set-up
@@ -43,14 +43,14 @@ public class SetupController extends SuperController implements Initializable {
 	}
 	
 	public void updateStats() {
-		mcAtk.setText("ATK: " + mc.getAttack());
-		mcEnergy.setText("Max Energy: " + mc.getMaxEnergy());
-		mcHealth.setText("Max Health: " + mc.getMaxHealth());
+		mcAtk.setText("ATK: " + tlg.mc.getAttack());
+		mcEnergy.setText("Max Energy: " + tlg.mc.getMaxEnergy());
+		mcHealth.setText("Max Health: " + tlg.mc.getMaxHealth());
 		
-		partnerAtk.setText("ATK: " + partner.getAttack());
-		partnerEnergy.setText("Max Energy: " + partner.getMaxEnergy());
-		partnerHealth.setText("Max Health: " + partner.getMaxHealth());
-		partnerOrder.setText(partner.getClass().getSimpleName().substring(2));
+		partnerAtk.setText("ATK: " + tlg.partner.getAttack());
+		partnerEnergy.setText("Max Energy: " + tlg.partner.getMaxEnergy());
+		partnerHealth.setText("Max Health: " + tlg.partner.getMaxHealth());
+		partnerOrder.setText(tlg.partner.getClass().getSimpleName().substring(2));
 	}
 	public void rollStats() {
 		String orderChoice = (String) mcOrder.getValue();
@@ -63,11 +63,13 @@ public class SetupController extends SuperController implements Initializable {
 					orderIndex = i;
 					break;
 				}
-			}			
-			SuperController.resetMC(orderIndex, mcName.getText());
+			}
+			tlg.mc = tlg.PlayerCreation(orderIndex, mcName.getText(), "mc");
 			
 			orderIndex = rand.nextInt(6) + 1;
-			SuperController.resetPartner(orderIndex, partnerName.getText());
+			tlg.partner = tlg.PlayerCreation(orderIndex, partnerName.getText(), "partner");
+			
+			tlg.mc.setPartner(tlg.partner);
 			
 			startButton.setText("Start");
 			
