@@ -2,6 +2,7 @@ package the_lucky_gauntlet.Screens;
 
 // Utility
 import the_lucky_gauntlet.*;
+import the_lucky_gauntlet.Rooms.R_Peaceful;
 
 // JavaFX Set-up
 import java.net.URL;
@@ -26,26 +27,25 @@ public class PrebattleController extends SuperController implements Initializabl
 	@FXML Button rest, train;
 	@FXML ImageView mcImage, partnerImage;
 	
-	private int actions;
+	private R_Peaceful currentRoom;
 	
 	@Override
-	public void initialize(URL url, ResourceBundle rb) {		
-		actions = 3;
-		
+	public void initialize(URL url, ResourceBundle rb) {
+		mcName.setText(tlg.mc.getName());
+		partnerName.setText(tlg.partner.getName());
+		mcImage.setImage(tlg.mc.getImg());
+		partnerImage.setImage(tlg.partner.getImg());
+	}
+	public void delayedInitialize() {
+		// Lets the current room be updated first before initialization
 		actionText.setText(" ");
-		movesLeftText.setText("Moves Left: " + actions);
-		mcName.setText(mc.getName());
-		partnerName.setText(partner.getName());
-                mcImage.setImage(mc.getImg());
-		partnerImage.setImage(partner.getImg());
+		movesLeftText.setText("Moves Left: " + currentRoom.getActions());
+		checkActionsLeft();
 	}	
 	
-	private void performAction(String textOutput) {
-		actions -= 1;
-		movesLeftText.setText("Moves Left: " + actions);
-		actionText.setText(textOutput);
-		
-		if(actions == 0) {
+	// Utility Methods
+	private void checkActionsLeft() {
+		if(currentRoom.getActions() == 0) {
 			mcFindWeapon.setDisable(true);
 			mcEnhanceWeapon.setDisable(true);
 			mcRepairWeapon.setDisable(true);
@@ -58,7 +58,17 @@ public class PrebattleController extends SuperController implements Initializabl
 			train.setDisable(true);
 		}
 	}
+	private void performAction(String textOutput) {
+		movesLeftText.setText("Moves Left: " +  + currentRoom.getActions());
+		actionText.setText(textOutput);
+		
+		checkActionsLeft();
+	}
+	public void enterRoom(R_Peaceful newRoom) {
+		currentRoom = newRoom;
+	}
 	
+	// Window Opening Methods
 	@FXML void openPause(ActionEvent e) throws IOException{
 		openNewWindow("Pause.fxml", e);
 	}
@@ -66,56 +76,39 @@ public class PrebattleController extends SuperController implements Initializabl
 		openNewWindow("WeaponSelect.fxml", e);
 	}
 	
+	// Party-wide Activities
 	@FXML void rest(ActionEvent e) throws IOException{
-		int mcInitialEnergy, mcFinalEnergy, partnerInitialEnergy, partnerFinalEnergy;
-		mcInitialEnergy = mc.getEnergy();
-		partnerInitialEnergy = partner.getEnergy();
+		int mcInitialEnergy = tlg.mc.getEnergy();
+		int partnerInitialEnergy = tlg.partner.getEnergy();
 		
-		mc.rest();
+		currentRoom.rest();
 		
-		mcFinalEnergy = mc.getEnergy();
-		partnerFinalEnergy = partner.getEnergy();
-		String textOutput = mc.getName() + " and " + partner.getName() + " rested!\n"
-				+ "Their energies increased by " + (mcFinalEnergy-mcInitialEnergy) + " and " + (partnerFinalEnergy-partnerInitialEnergy)
-				+ " and are now " + mcFinalEnergy + " and " + partnerFinalEnergy + "!";
+		String textOutput = tlg.mc.getName() + " and " + tlg.partner.getName() + " rested!\n"
+				+ "Their energies increased by " + (tlg.mc.getEnergy()-mcInitialEnergy) + " and " + (tlg.partner.getEnergy()-partnerInitialEnergy)
+				+ " and are now " + tlg.mc.getEnergy() + " and " + tlg.partner.getEnergy() + "!";
 
 		performAction(textOutput);
 	}
 	@FXML void train(ActionEvent e) throws IOException{
-		int mcInitialAtk, mcFinalAtk, partnerInitialAtk, partnerFinalAtk;
-		int mcInitialEnergy, mcFinalEnergy, partnerInitialEnergy, partnerFinalEnergy;
 		String textOutput;
-		
-		mcInitialAtk = mc.getAttack();
-		partnerInitialAtk = partner.getAttack();
-		mcInitialEnergy = mc.getEnergy();
-		partnerInitialEnergy = partner.getEnergy();
+		int mcInitialEnergy = tlg.mc.getEnergy();
+		int partnerInitialEnergy = tlg.partner.getEnergy();
 		
 		try {
-			mc.train();
-			partner.train();
+			currentRoom.train();
 			
-			mcFinalAtk = mc.getAttack();
-			partnerFinalAtk = partner.getAttack();
-			mcFinalEnergy = mc.getEnergy();
-			partnerFinalEnergy = partner.getEnergy();
-		
-			textOutput = mc.getName() + " and " + partner.getName() + " trained together!\n"
-				+ "Their atk power increased by " + (mcFinalAtk-mcInitialAtk) + " and " + (partnerFinalAtk-partnerInitialAtk)
-				+ " at the cost of 25 energy!\nThey now have an attack power of " + mcFinalAtk + " and " + partnerFinalAtk + "!";
+			textOutput = tlg.mc.getName() + " and " + tlg.partner.getName() + " trained together!\n"
+				+ "Their atk power increased by 5 at the cost of 25 energy!\nThey now have an attack power of "
+				+ tlg.mc.getAttack() + " and " + tlg.partner.getAttack() + "!";
 		}
 		catch(NoEnergyException NEE) {
-			mc.rest();
-			
-			mcFinalEnergy = mc.getEnergy();
-			partnerFinalEnergy = partner.getEnergy();
+			currentRoom.rest();
 			
 			textOutput = "Your party was too tired to train. They decided to rest and increased their energies by "
-					+ (mcFinalEnergy-mcInitialEnergy) + " and " + (partnerFinalEnergy-partnerInitialEnergy)
-					+ ".\nThey now have " + mcFinalEnergy + " and " + partnerFinalEnergy + " energy.";
+					+ (tlg.mc.getEnergy()-mcInitialEnergy) + " and " + (tlg.partner.getEnergy()-partnerInitialEnergy)
+					+ ".\nThey now have " + tlg.mc.getEnergy() + " and " + tlg.partner.getEnergy() + " energy.";
 		}
 		
-		performAction(textOutput);		
+		performAction(textOutput);
 	}
-	
 }
