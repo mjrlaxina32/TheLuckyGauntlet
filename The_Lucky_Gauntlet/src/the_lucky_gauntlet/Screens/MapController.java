@@ -5,6 +5,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.*;
 
+// Lucky Gauntlet Files
+import the_lucky_gauntlet.*;
+import the_lucky_gauntlet.Rooms.*;
+
 // Components
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -23,10 +27,32 @@ public class MapController extends SuperController implements Initializable{
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {}
 	
-	@FXML void openBattle(ActionEvent e) throws IOException{
+	@FXML void openRoom(ActionEvent e) throws IOException {
+		String fullRoomData = e.getSource().toString();
+		int roomIndex = Integer.parseInt(fullRoomData.substring(14,16));
+		System.out.println(roomIndex);
+		
+		Room newRoom = Room.getRoom(roomIndex);
+		String roomType = newRoom.getClass().toString().substring(33);
+		
+		
+		if (roomType.equals("Peaceful")) {
+			System.out.println("Open prebattle");
+			openPrebattle(e, roomIndex);
+		}
+		else if(roomType.equals("Battle")) {
+			openBattle(e, roomIndex);
+		}
+	}
+	private void openBattle(ActionEvent e) throws IOException{
 		openNewWindow("Battle.fxml", e);
 	}
-	@FXML void openPrebattle(ActionEvent e) throws IOException{
-		openNewWindow("Prebattle.fxml", e);
+	private void openPrebattle(ActionEvent e) throws IOException{
+		FXMLLoader loader = openNewWindow("Prebattle.fxml", e);
+		PrebattleController PController = loader.getController();
+		R_Peaceful newRoom = (R_Peaceful) Room.getRoom(roomIndex);
+		PController.enterRoom(newRoom);
+		
+		PController.delayedInitialize();
 	}
 }
