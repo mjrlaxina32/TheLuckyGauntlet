@@ -47,14 +47,24 @@ public class The_Lucky_Gauntlet extends Application {
 	}
 
 	public static void main(String[] args) {
-		Player mc = new P_Archer("Henry", "mc");
-		Player partner = new P_Rogue("Joe", "partner");
+		for(int i = 0; i<19; i++) {
+			Random rand = new Random();
+			if(rand.nextBoolean()) {
+				new R_Peaceful("Room " + i, true, 3);
+			}
+			else {
+				new R_Battle("Room " + i, true);
+			}
+		}
+		mc = new P_Archer("Henry", "mc");
+		partner = new P_Rogue("Joe", "partner");
 		
 		mc.setPartner(partner);
 		partner.setPartner(mc);
 		
 		try {
-			mc.useEnergy(mc.getEnergy()+1);
+			mc.useEnergy(mc.getEnergy());
+			partner.useEnergy(partner.getEnergy());
 		}
 		catch (NoEnergyException NEE){
 			mc.stall();
