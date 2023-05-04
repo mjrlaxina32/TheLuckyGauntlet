@@ -13,6 +13,7 @@ import the_lucky_gauntlet.Screens.*;
 
 public class The_Lucky_Gauntlet extends Application {
 	public static Player mc, partner;
+	public static Room currentRoom;
 	
 	public static Player PlayerCreation(int order, String n, String type) throws InvalidOrderException {
 		switch (order) {
