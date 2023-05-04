@@ -1,38 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="the_lucky_gauntlet.Screens.HomeController">
+<VBox fx:id="Home" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="720.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="the_lucky_gauntlet.Screens.HomeController">
    <children>
-      <VBox fx:id="Home" alignment="CENTER" layoutY="90.0" prefHeight="200.0" prefWidth="547.0" spacing="20.0" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="THE LUCKY GAUNTLET">
-               <font>
-                  <Font size="64.0" />
-               </font>
-            </Text>
-            <Button mnemonicParsing="false" onAction="#openSetup" prefWidth="108.0" text="Play Game">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#exit" prefHeight="39.0" prefWidth="107.0" text="Exit">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </VBox>
+      <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" text="THE LUCKY GAUNTLET" textAlignment="CENTER">
+         <font>
+            <Font size="64.0" />
+         </font>
+      </Text>
+      <Button mnemonicParsing="false" onAction="#openSetup" prefWidth="108.0" text="Play Game">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#exit" onMouseEntered="#setBlackBG" onMouseExited="#setWhiteBG" prefHeight="39.0" prefWidth="107.0" text="Exit">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
-   <padding>
-      <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-   </padding>
-</AnchorPane>
+</VBox>

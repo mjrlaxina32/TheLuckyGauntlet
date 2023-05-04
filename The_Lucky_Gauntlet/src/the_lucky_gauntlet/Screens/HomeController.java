@@ -9,9 +9,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -21,8 +23,9 @@ import javafx.stage.Stage;
  */
 public class HomeController extends SuperController implements Initializable {
 
-    @FXML
-    private VBox Home;
+    @FXML private VBox Home;
+    @FXML private Text title;
+    //ayaw magload :sob:
 
     /**
      * Initializes the controller class.
@@ -33,7 +36,18 @@ public class HomeController extends SuperController implements Initializable {
     }    
     
     @FXML public void openSetup(ActionEvent e) throws IOException {
-		openNewWindow("Setup.fxml",e); //TO CHANGE TO SET-UP SCREEN!!!!
+		openNewWindow("Setup.fxml",e);
+    }
+    
+    @FXML private void setBlackBG(Event event)throws IOException{
+        Home.setStyle("-fx-background-color: black");
+        title.setStyle("-fx-fill: white");
+    }
+    
+    @FXML private void setWhiteBG(Event event)throws IOException{
+        Home.setStyle("-fx-background-color: white");
+        title.setStyle("-fx-fill: black");
+        //sets bg to white and not the prev/default bg color
     }
     
     @FXML public void exit(ActionEvent e) throws IOException {
