@@ -9,13 +9,13 @@
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Round #" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You Lose">
+            <Text fx:id="roundNo" strokeType="OUTSIDE" strokeWidth="0.0" text="Round #" />
+            <Text fx:id="loseMsg" strokeType="OUTSIDE" strokeWidth="0.0" text="You Lose">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GAME OVER">
+            <Text fx:id="gameOverMsg" strokeType="OUTSIDE" strokeWidth="0.0" text="GAME OVER">
                <font>
                   <Font size="36.0" />
                </font>

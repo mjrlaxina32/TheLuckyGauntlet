@@ -26,19 +26,19 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Loot Found:" />
             <FlowPane alignment="CENTER" hgap="10.0" prefHeight="115.0" prefWidth="300.0">
                <children>
-                  <ImageView fitHeight="91.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="91.0" fitWidth="85.0" onMouseEntered="#highlight" onMouseExited="#dehighlight" pickOnBounds="true" preserveRatio="true" style="-fx-effect: blue;">
                      <image>
-                        <Image url="@../../Sprites/Fists.png" />
+                        <Image url="@../Sprites/Fists.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="91.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="91.0" fitWidth="85.0" onMouseEntered="#highlight" onMouseExited="#dehighlight" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Sprites/Fists.png" />
+                        <Image url="@../Sprites/Fists.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="91.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="91.0" fitWidth="85.0" onMouseEntered="#highlight" onMouseExited="#dehighlight" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Sprites/Fists.png" />
+                        <Image url="@../Sprites/Fists.png" />
                      </image>
                   </ImageView>
                </children>

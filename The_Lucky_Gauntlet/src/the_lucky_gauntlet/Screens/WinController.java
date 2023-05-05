@@ -11,9 +11,9 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 /**
  * FXML Controller class
@@ -21,12 +21,26 @@ import javafx.scene.layout.VBox;
  * @author Athena Kimwell
  */
 public class WinController extends SuperController implements Initializable {
-    
+        
     @Override
     public void initialize(URL url, ResourceBundle rb) {}
 
     @FXML private void openMap(ActionEvent event) throws IOException {
         openNewWindow("Map.fxml", event);		
+    }
+    
+    @FXML private void highlight(Event event) throws IOException {
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setColor(Color.GREEN);
+        dropShadow.setHeight(5); 
+        dropShadow.setWidth(5); 
+        dropShadow.setRadius(5); 
+        
+        ((ImageView)event.getSource()).setEffect(dropShadow);
+    }
+    
+    @FXML private void dehighlight(Event event) throws IOException {      
+        ((ImageView)event.getSource()).setEffect(null);
     }
     
 }
