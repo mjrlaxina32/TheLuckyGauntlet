@@ -67,6 +67,14 @@ public abstract class Character {
 		Image classImg = new Image("/the_lucky_gauntlet/Sprites/" + this.getImgFileName());
 		return classImg;
 	}
+	public boolean hasEffect(String searchEffect){
+		for(String effect : effects){
+			if(effect.equals(searchEffect)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	// Base Value Re-randomization
 	public void resetAtkValue(int randFactor) {
