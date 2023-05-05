@@ -10,6 +10,7 @@ public class R_Battle extends Room{
 	public R_Battle(String n, boolean u) {
 		super(n, u);
 		enemies = new ArrayList<Enemy>();
+		this.fillRoom(3);
 	}
 
 	// Getter Methods
@@ -20,7 +21,6 @@ public class R_Battle extends Room{
 	// Enemy Set-up Methods
 	public void addEnemy(Enemy c){
 		enemies.add(c);
-		c.updateRoom(this);
 	}
 	public void fillRoom(int enemyCount){
 		for(int i=0; i<enemyCount; i++) {
