@@ -1,6 +1,7 @@
 package the_lucky_gauntlet;
 
 import java.util.Random;
+import the_lucky_gauntlet.Exceptions.*;
 
 public class Weapon {
 	private String name, order;
