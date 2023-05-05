@@ -17,10 +17,7 @@ public class Enemy extends Character {
 		int damage = attack;
 		System.out.printf("%s went on a rampage and dealt %d damage to all" +
 				"enemies!\n", this.getName(), damage);
-		ArrayList<Player> players = this.getCurrentRoom().getAllPlayers();
-		for (Player p : players) {
-			this.targetSelect(p);
-			target.takeDamage(damage);
-		}
+		tlg.mc.takeDamage(damage);
+		tlg.partner.takeDamage(damage);
 	}
 }
