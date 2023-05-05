@@ -38,16 +38,16 @@
                <children>
                   <FlowPane prefHeight="45.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="mcImage" fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../Sprites/Archer.png" />
                            </image>
                         </ImageView>
                         <VBox prefHeight="41.0" prefWidth="160.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player Name" />
-                              <ProgressBar prefWidth="200.0" progress="1.0" />
-                              <ProgressBar prefWidth="200.0" progress="0.58">
+                              <Text fx:id="mcName" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Name" />
+                              <ProgressBar fx:id="mcHealth" prefWidth="200.0" progress="1.0" />
+                              <ProgressBar fx:id="mcEnergy" prefWidth="200.0" progress="0.58">
                                  <effect>
                                     <ColorAdjust hue="1.0" />
                                  </effect>
@@ -58,9 +58,9 @@
                   </FlowPane>
                   <FlowPane alignment="CENTER" hgap="10.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="52.0" text="Attack" />
-                        <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="52.0" text="Skill" />
-                        <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="52.0" text="Stall" />
+                        <Button id="mcAttackButton" fx:id="mcAttackButton" mnemonicParsing="false" onAction="#mcAttack" prefHeight="63.0" prefWidth="52.0" text="Attack" />
+                        <Button fx:id="mcSkillButton" mnemonicParsing="false" onAction="#mcSkill" prefHeight="63.0" prefWidth="52.0" text="Skill" />
+                        <Button fx:id="mcStallButton" mnemonicParsing="false" onAction="#stall" prefHeight="62.0" prefWidth="52.0" text="Stall" />
                      </children>
                   </FlowPane>
                </children>
@@ -71,16 +71,16 @@
                      <children>
                         <VBox prefHeight="41.0" prefWidth="160.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Partner Name" />
-                              <ProgressBar prefWidth="200.0" progress="0.75" />
-                              <ProgressBar prefWidth="200.0" progress="0.5">
+                              <Text fx:id="partnerName" strokeType="OUTSIDE" strokeWidth="0.0" text="Partner Name" />
+                              <ProgressBar fx:id="partnerHealth" prefWidth="200.0" progress="0.75" />
+                              <ProgressBar fx:id="partnerEnergy" prefWidth="200.0" progress="0.5">
                                  <effect>
                                     <ColorAdjust hue="1.0" />
                                  </effect>
                               </ProgressBar>
                            </children>
                         </VBox>
-                        <ImageView fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="partnerImage" fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../Sprites/Archer.png" />
                            </image>
@@ -89,15 +89,15 @@
                   </FlowPane>
                   <FlowPane alignment="CENTER" hgap="10.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="52.0" text="Attack" />
-                        <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="52.0" text="Skill" />
-                        <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="52.0" text="Stall" />
+                        <Button id="partnerAttackButton" fx:id="partnerAttackButton" mnemonicParsing="false" onAction="#partnerAttack" prefHeight="62.0" prefWidth="52.0" text="Attack" />
+                        <Button fx:id="partnerSkillButton" mnemonicParsing="false" onAction="#partnerSkill" prefHeight="63.0" prefWidth="52.0" text="Skill" />
+                        <Button fx:id="partnerStallButton" mnemonicParsing="false" onAction="#stall" prefHeight="63.0" prefWidth="52.0" text="Stall" />
                      </children>
                   </FlowPane>
                </children>
             </VBox>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="125.0" stroke="BLACK" strokeType="INSIDE" width="180.0" GridPane.columnIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DIALOGUE BOX" GridPane.columnIndex="1" />
+            <Text fx:id="actionText" strokeType="OUTSIDE" strokeWidth="0.0" text="DIALOGUE BOX" textAlignment="CENTER" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </bottom>
@@ -106,16 +106,16 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy 1" />
-                  <ProgressBar prefWidth="200.0" progress="0.69" />
-                  <ProgressBar prefWidth="200.0" progress="0.5">
+                  <Text fx:id="enemy1Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy 1" />
+                  <ProgressBar fx:id="enemy1Health" prefWidth="200.0" progress="0.69" />
+                  <ProgressBar fx:id="enemy1Energy" prefWidth="200.0" progress="0.5">
                      <effect>
                         <ColorAdjust hue="1.0" />
                      </effect>
                   </ProgressBar>
-                  <ImageView fitHeight="100.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="enemy1Image" fitHeight="115.0" fitWidth="125.0" onMouseClicked="#selectEnemy" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Sprites/Enemy.png" />
+                        <Image url="@../Sprites/Enemy.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -125,16 +125,16 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy 2" />
-                  <ProgressBar prefWidth="200.0" progress="0.42" />
-                  <ProgressBar prefWidth="200.0" progress="0.79">
+                  <Text fx:id="enemy2Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy 2" />
+                  <ProgressBar fx:id="enemy2Health" prefWidth="200.0" progress="0.42" />
+                  <ProgressBar fx:id="enemy2Energy" prefWidth="200.0" progress="0.79">
                      <effect>
                         <ColorAdjust hue="1.0" />
                      </effect>
                   </ProgressBar>
-                  <ImageView fitHeight="100.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="enemy2Image" fitHeight="115.0" fitWidth="125.0" onMouseClicked="#selectEnemy" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Sprites/Enemy.png" />
+                        <Image url="@../Sprites/Enemy.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -144,16 +144,16 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy 3" />
-                  <ProgressBar prefWidth="200.0" progress="0.99" />
-                  <ProgressBar prefWidth="200.0" progress="1.0">
+                  <Text fx:id="enemy3Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy 3" />
+                  <ProgressBar fx:id="enemy3Health" prefWidth="200.0" progress="0.99" />
+                  <ProgressBar fx:id="enemy3Energy" prefWidth="200.0" progress="1.0">
                      <effect>
                         <ColorAdjust hue="1.0" />
                      </effect>
                   </ProgressBar>
-                  <ImageView fitHeight="100.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="enemy3Image" fitHeight="115.0" fitWidth="125.0" onMouseClicked="#selectEnemy" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Sprites/Enemy.png" />
+                        <Image url="@../Sprites/Enemy.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="10.0" />
