@@ -18,11 +18,11 @@ public class P_Mage extends Player {
 			this.useEnergy(cost);
 			System.out.printf("%s cast a powerful explosion dealing %d damage to all" +
 												"enemies!\n", this.getName(), this.getAttack());
-			/*ArrayList<Enemy> enemies = this.getCurrentRoom().getAllEnemies();
+			ArrayList<Enemy> enemies = tlg.currentRoom.getAllEnemies();
 			for(Enemy e : enemies) {
 				this.targetSelect(e);
 				e.takeDamage(this.getAttack());
-			}*/
+			}
 		}
 		catch (NoEnergyException NEE) {
 			this.stall();
