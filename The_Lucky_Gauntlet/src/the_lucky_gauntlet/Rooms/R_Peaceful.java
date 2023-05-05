@@ -3,6 +3,7 @@ package the_lucky_gauntlet.Rooms;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import the_lucky_gauntlet.*;
+import the_lucky_gauntlet.Exceptions.BeyondRangeException;
 import the_lucky_gauntlet.Exceptions.NoEnergyException;
 
 public class R_Peaceful extends Room{
@@ -10,7 +11,7 @@ public class R_Peaceful extends Room{
 	
 	public R_Peaceful(String n, boolean u, int aC) {
 		super(n, u);
-		actionCount = aC;
+		actions = aC;
 	}
 	
 	// Getter Methods
@@ -36,7 +37,7 @@ public class R_Peaceful extends Room{
 	}
 	
 	// Individual Actions
-	public void repairWeapon(Player p) {
+	public void repairWeapon(Player p) throws BeyondRangeException {
 		p.getWeapon().repair();
 		actions -= 1;
 	}
