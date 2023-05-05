@@ -1,5 +1,6 @@
 package the_lucky_gauntlet;
 
+import java.util.Random;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,9 +10,10 @@ import javafx.stage.Stage;
 import the_lucky_gauntlet.Exceptions.NoEnergyException;
 import the_lucky_gauntlet.Exceptions.InvalidOrderException;
 import the_lucky_gauntlet.Orders.*;
+import the_lucky_gauntlet.Rooms.*;
 import the_lucky_gauntlet.Screens.*;
 
-public class The_Lucky_Gauntlet extends Application {
+public class tlg extends Application {
 	public static Player mc, partner;
 	public static Room currentRoom;
 	
