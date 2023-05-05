@@ -49,19 +49,17 @@ public class Player extends Character {
 		System.out.println("Generic Skill Text 1");
 	} // Overrided by the different classes
 	public void attack() {
-		if(this.getWeapon().getOrder().equals(this.getClass().getSimpleName().substring(2))) {
-			try {
-				this.useEnergy(30);
-				int totalDamage = attack + weapon.getAtkBonus();
-				System.out.printf("%s used %d energy to attack %s and dealt %d damage!\n", this.getName(), 20, target.getName(),	totalDamage);
-				target.takeDamage(totalDamage);
+		super.attack();
+		
+		if (target.isDead()){
+			for(Enemy e : tlg.currentRoom.getAllEnemies()) {
+				if(!e.isDead()) {
+					target = e;
+					partner.targetSelect(target);
+					System.out.println("Target has changed");
+					break;
+				}
 			}
-			catch(NoEnergyException NEE) {
-				this.stall();
-			}
-		}
-		else {
-			super.attack();
 		}
 	}
 	
@@ -70,24 +68,6 @@ public class Player extends Character {
 				partner.getName());
 		this.gainEnergy(50);
 		partner.gainEnergy(50);
-	}
-
-	public void targetSelect(ArrayList<Enemy> targets) {
-		System.out.println("Enemies: ");
-		for (int i = 0; i < targets.size(); i++) {
-			System.out.printf(" %d - %s (HP: %d)\n", i + 1, targets.get(i).getName(),
-					targets.get(i).getHealth());
-		}
-		System.out.print("Who is your target? ");
-		int targetIndex = Integer.parseInt(sc.nextLine()) - 1;
-		try {
-			target = targets.get(targetIndex);
-		}
-		catch (IndexOutOfBoundsException e) {
-			System.out.printf("%d is not a valid input. Note: Inputs are the ones " +
-					"on the left of the hyphen. This means that enemy 2 " +
-					"can have an input of 1!\n", targetIndex);
-		}
 	}
 
 	// Weapon Regulation
