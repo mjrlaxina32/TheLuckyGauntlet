@@ -67,6 +67,9 @@ public class PrebattleController extends SuperController implements Initializabl
 	public void enterRoom(R_Peaceful newRoom) {
 		currentRoom = newRoom;
 	}
+	public R_Peaceful getCurrentRoom() {
+		return currentRoom;
+	}
 	
 	// Window Opening Methods
 	@FXML void openPause(ActionEvent e) throws IOException{
