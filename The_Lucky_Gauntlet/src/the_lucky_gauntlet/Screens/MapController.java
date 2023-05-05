@@ -9,12 +9,6 @@ import javafx.fxml.*;
 import the_lucky_gauntlet.*;
 import the_lucky_gauntlet.Rooms.*;
 
-// Components
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 // Events
 import javafx.event.ActionEvent;
 
@@ -45,7 +39,13 @@ public class MapController extends SuperController implements Initializable{
 		}
 	}
 	private void openBattle(ActionEvent e) throws IOException{
-		openNewWindow("Battle.fxml", e);
+		FXMLLoader loader = openNewWindow("Battle.fxml", e);
+		BattleController BController = loader.getController();
+		R_Battle newRoom = (R_Battle) Room.getRoom(roomIndex);
+		BController.enterRoom(newRoom);
+		
+		tlg.currentRoom = BController.getCurrentRoom();
+		BController.delayedInitialize();
 	}
 	private void openPrebattle(ActionEvent e) throws IOException{
 		FXMLLoader loader = openNewWindow("Prebattle.fxml", e);
@@ -53,6 +53,7 @@ public class MapController extends SuperController implements Initializable{
 		R_Peaceful newRoom = (R_Peaceful) Room.getRoom(roomIndex);
 		PController.enterRoom(newRoom);
 		
+		tlg.currentRoom = PController.getCurrentRoom();
 		PController.delayedInitialize();
 	}
 }
