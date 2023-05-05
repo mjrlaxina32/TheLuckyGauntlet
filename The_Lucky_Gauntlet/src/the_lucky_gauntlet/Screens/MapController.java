@@ -38,7 +38,7 @@ public class MapController extends SuperController implements Initializable{
 			openBattle(e, roomIndex);
 		}
 	}
-	private void openBattle(ActionEvent e) throws IOException{
+	private void openBattle(ActionEvent e, int roomIndex) throws IOException{
 		FXMLLoader loader = openNewWindow("Battle.fxml", e);
 		BattleController BController = loader.getController();
 		R_Battle newRoom = (R_Battle) Room.getRoom(roomIndex);
@@ -47,7 +47,7 @@ public class MapController extends SuperController implements Initializable{
 		tlg.currentRoom = BController.getCurrentRoom();
 		BController.delayedInitialize();
 	}
-	private void openPrebattle(ActionEvent e) throws IOException{
+	private void openPrebattle(ActionEvent e, int roomIndex) throws IOException{
 		FXMLLoader loader = openNewWindow("Prebattle.fxml", e);
 		PrebattleController PController = loader.getController();
 		R_Peaceful newRoom = (R_Peaceful) Room.getRoom(roomIndex);
