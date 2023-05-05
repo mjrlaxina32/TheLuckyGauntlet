@@ -1,7 +1,9 @@
 package the_lucky_gauntlet.Orders;
 
+import java.util.ArrayList;
 import the_lucky_gauntlet.*;
-import the_lucky_gauntlet.Exceptions.NoEnergyException;
+import the_lucky_gauntlet.tlg;
+import the_lucky_gauntlet.Exceptions.*;
 
 public class P_Mage extends Player {
 	public P_Mage(String n, String t) {
