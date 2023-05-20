@@ -1,7 +1,6 @@
 package the_lucky_gauntlet;
 
-import the_lucky_gauntlet.Exceptions.NoEnergyException;
-import the_lucky_gauntlet.Exceptions.InaccessibleRoomException;
+import the_lucky_gauntlet.Exceptions.*;
 
 import java.util.ArrayList;
 
