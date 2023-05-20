@@ -8,8 +8,9 @@ public class P_Cleric extends Player{
 		super(n, t, "Cleric.png");
 		System.out.println("Order: Cleric");
 		this.resetHealthValue(5);
-		Weapon staff = new Weapon("staff", "Cleric", 6, 50);
-		weapon = staff;
+		Weapon staff = new Weapon("Staff", "Door.png", "Cleric", 6, 50);
+		this.gainWeapon(staff);
+                weapon = staff;
 	}
 
 	public void useSkill() {
