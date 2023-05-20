@@ -46,11 +46,11 @@
       </FlowPane>
       <FlowPane alignment="CENTER" prefHeight="20.0" prefWidth="300.0">
          <children>
-            <Button fx:id="prevWeaponButton" mnemonicParsing="false" prefWidth="70.0" text="Previous">
+            <Button fx:id="prevWeaponButton" mnemonicParsing="false" onAction="#prev" prefWidth="70.0" text="Previous">
                <FlowPane.margin>
                   <Insets right="5.0" />
                </FlowPane.margin></Button>
-            <Button fx:id="nextWeaponButton" mnemonicParsing="false" prefWidth="70.0" text="Next">
+            <Button fx:id="nextWeaponButton" mnemonicParsing="false" onAction="#next" prefWidth="70.0" text="Next">
                <FlowPane.margin>
                   <Insets left="5.0" />
                </FlowPane.margin></Button>
@@ -59,7 +59,7 @@
             <Insets bottom="10.0" />
          </VBox.margin>
       </FlowPane>
-      <Button fx:id="equipWeaponButton" alignment="CENTER" mnemonicParsing="false" prefWidth="60.0" text="Equip">
+      <Button fx:id="equipWeaponButton" alignment="CENTER" mnemonicParsing="false" onAction="#equip" prefWidth="60.0" text="Equip">
          <VBox.margin>
             <Insets bottom="5.0" />
          </VBox.margin></Button>
