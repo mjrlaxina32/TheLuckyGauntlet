@@ -1,6 +1,6 @@
 package the_lucky_gauntlet;
 
-import the_lucky_gauntlet.Exceptions.NoEnergyException;
+import the_lucky_gauntlet.Exceptions.*;
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public abstract class Character {
 		maxEnergy = rand.nextInt(100) + 100;
 		energy = maxEnergy;
 
-		weapon = new Weapon("Fists", "Generic",0, 1000);
+		weapon = new Weapon("Fists", "Fists.png", "Generic",0, 1000);
 
 		// this.showStats();
 	}
