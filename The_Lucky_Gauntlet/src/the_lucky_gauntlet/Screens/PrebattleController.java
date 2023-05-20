@@ -76,7 +76,9 @@ public class PrebattleController extends SuperController implements Initializabl
 		openNewWindow("Pause.fxml", e);
 	}
 	@FXML void openWeaponSelect(ActionEvent e) throws IOException{
-		openNewWindow("WeaponSelect.fxml", e);
+                actionsource = (((Button)e.getSource()).getId()).replace("ChangeWeapon","");
+                System.out.println(actionsource);
+                openNewWindow("WeaponSelect.fxml", e);
 	}
 	
 	// Party-wide Activities
