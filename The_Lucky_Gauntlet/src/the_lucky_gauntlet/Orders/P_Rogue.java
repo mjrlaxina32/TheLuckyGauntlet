@@ -7,8 +7,9 @@ public class P_Rogue extends Player{
 	public P_Rogue(String n, String t){
 		super(n, t, "Rogue.png");
 		System.out.println("Order: Rouge");
-   		Weapon pistol = new Weapon("pistol", "Rogue",7, 60);
-		weapon = pistol;
+   		Weapon pistol = new Weapon("Pistol","Door.png", "Rogue",7, 60);
+		this.gainWeapon(pistol);		
+                weapon = pistol;
 	}
 
 	public void useSkill() {
