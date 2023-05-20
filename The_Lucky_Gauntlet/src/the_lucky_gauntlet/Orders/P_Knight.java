@@ -9,8 +9,9 @@ public class P_Knight extends Player{
 		System.out.println("Order: Knight");
 		this.resetHealthValue(20);
 		this.resetHealthValue(8);
-		Weapon sword = new Weapon("sword", "Knight", 6, 50);
-		weapon = sword;
+		Weapon sword = new Weapon("Sword","Door.png", "Knight", 6, 50);
+		this.gainWeapon(sword);
+                weapon = sword;
 	}
 	public void useSkill() {
 		int cost = 40;
