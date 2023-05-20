@@ -8,8 +8,9 @@ public class P_Bard extends Player{
 		super(n, t, "Bard.png");
 		System.out.println("Order: Bard");
 		this.resetAtkValue(5);
-		Weapon kazoo = new Weapon("kazoo", "Bard", 5, 50);
-		weapon = kazoo;
+		Weapon kazoo = new Weapon("Kazoo", "Door.png", "Bard", 5, 50);
+		this.gainWeapon(kazoo);
+                weapon = kazoo;
 	}
 
 	public void useSkill() {
