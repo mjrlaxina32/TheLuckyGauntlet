@@ -15,7 +15,9 @@ public class Player extends Character {
 		super(newName, imageFilename);
 		playerType = newPlayerType;
 		players.add(this);
-	}
+                Weapon fists = new Weapon("Fists", "Fists.png", "Generic",0, 1000);
+                weaponList.add(fists);
+        }//!
 
 	// Partner Methods
 	public void setPartner(Player newPartner) {
@@ -29,7 +31,21 @@ public class Player extends Character {
 	public String getPartnerName() {
 		return partner.getName();
 	}
-
+        public ArrayList getWeaponList(){
+                return weaponList;
+        }
+        
+        public Weapon getWeapon(){
+                return weapon;
+        }
+        
+        
+        
+        /*public ArrayList getWeaponList(Player e){
+                
+                return weaponList;
+        }*/
+        
 	// Peaceful Room Actions
 	public void train() throws NoEnergyException {
 		this.useEnergy(25);
@@ -58,9 +74,9 @@ public class Player extends Character {
 					partner.targetSelect(target);
 					System.out.println("Target has changed");
 					break;
-				}
-			}
-		}
+                                }
+                        }
+                }
 	}
 	
 	public void stall() {
@@ -74,7 +90,15 @@ public class Player extends Character {
 	public void gainWeapon(Weapon w) {
 		weaponList.add(w);
 	}
-	
+        
+        public void changeWeapon(int index){
+                weapon = weaponList.get(index);
+        }
+        
+	public Weapon getWeaponFromList(int index){
+                return weaponList.get(index);
+        }
+        
 	// Maybe should be limited to treasure rooms
 	public void newWeapon() {
 		String[] orders = {"Archer", "Bard", "Cleric", "Knight", "Mage", "Rogue"};
