@@ -7,7 +7,7 @@ public class P_Cleric extends Player{
 	public P_Cleric(String n, String t){
 		super(n, t, "Cleric.png");
 		System.out.println("Order: Cleric");
-		this.resetHealthValue(5);
+		this.resetHealthValue(15);
 		Weapon staff = new Weapon("Staff", "Door.png", "Cleric", 6, 50);
 		this.gainWeapon(staff);
                 weapon = staff;
@@ -18,9 +18,9 @@ public class P_Cleric extends Player{
 		try {
 			this.useEnergy(cost);
 			System.out.printf("%s cast a revival spell! %s and %s both healed by " +
-												"40 health!", this.getName(), this.getName(), this.getPartnerName());
-			this.heal(40);
-			this.getPartner().heal(40);
+												"20 health!", this.getName(), this.getName(), this.getPartnerName());
+			this.heal(20);
+			this.getPartner().heal(20);
 		}
 		catch (NoEnergyException NEE) {
 			this.stall();
