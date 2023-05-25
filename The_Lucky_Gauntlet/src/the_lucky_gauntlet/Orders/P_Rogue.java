@@ -17,7 +17,7 @@ public class P_Rogue extends Player{
 		try {
 			this.useEnergy(cost);
 			System.out.println(this.getName() + " vanished into a puff of smoke!");
-			this.effects.add("Ghost in the Fog");
+			this.addEffect("Ghost in the Fog", 7);
 		}
 		catch (NoEnergyException NEE) {
 			this.stall();
