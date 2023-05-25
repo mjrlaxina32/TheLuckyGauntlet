@@ -2,7 +2,10 @@ package the_lucky_gauntlet;
 
 import the_lucky_gauntlet.Exceptions.InaccessibleRoomException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
+import the_lucky_gauntlet.Rooms.R_Battle;
+import the_lucky_gauntlet.Rooms.R_Peaceful;
 
 public abstract class Room {
 	private String name;
@@ -47,6 +50,20 @@ public abstract class Room {
 		completed = true;
 	}
 
+	public static void resetRooms() {
+		map.clear();
+		
+		for(int i = 0; i<19; i++) {
+			Random rand = new Random();
+			if(rand.nextInt(3) == 2) {
+				new R_Peaceful("Room " + i, true, 3);
+			}
+			else {
+				new R_Battle("Room " + i, true);
+			}
+		}
+	}
+	
 	// Battle Room Methods (Overriden in R_Battle and not used in other methods)
 	public ArrayList<Enemy> getAllEnemies() {
 		return null;
