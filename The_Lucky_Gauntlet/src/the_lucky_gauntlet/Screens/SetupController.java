@@ -2,8 +2,6 @@ package the_lucky_gauntlet.Screens;
 
 // Utility
 import java.util.Random;
-import the_lucky_gauntlet.tlg;
-import the_lucky_gauntlet.Screens.*;
 
 // Java-fx Set-up
 import java.net.URL;
@@ -22,7 +20,10 @@ import javafx.event.ActionEvent;
 // Exceptions
 import the_lucky_gauntlet.Exceptions.InvalidOrderException;
 import java.io.IOException;
-import the_lucky_gauntlet.Player;
+
+// Lucky Gauntlet Imports
+import the_lucky_gauntlet.tlg;
+import the_lucky_gauntlet.Room;
 
 public class SetupController extends SuperController implements Initializable {
 	@FXML Text mcAtk, mcEnergy, mcHealth, partnerOrder, partnerAtk, partnerEnergy, partnerHealth;
@@ -37,6 +38,7 @@ public class SetupController extends SuperController implements Initializable {
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		Room.resetRooms();
 		for (String orderName : orders){
 			mcOrder.getItems().add(orderName);
 		}
@@ -70,6 +72,7 @@ public class SetupController extends SuperController implements Initializable {
 			tlg.partner = tlg.PlayerCreation(orderIndex, partnerName.getText(), "partner");
 			
 			tlg.mc.setPartner(tlg.partner);
+			tlg.partner.setPartner(tlg.mc);
 			
 			startButton.setText("Start");
 			
