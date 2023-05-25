@@ -4,6 +4,9 @@
  */
 package the_lucky_gauntlet.Screens;	
 
+// Utility
+import java.util.ArrayList;
+
 // Java-FX Set-up
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +19,11 @@ import javafx.scene.text.Text;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
+// Timer
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.application.Platform;
+
 // Lucky Gauntlet Files
 import the_lucky_gauntlet.Rooms.R_Battle;
 import the_lucky_gauntlet.*;
@@ -24,8 +32,6 @@ import the_lucky_gauntlet.*;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
-// Exceptions
-import java.io.IOException;
 
 /**
  * FXML Controller class
@@ -38,20 +44,28 @@ public class BattleController extends SuperController implements Initializable {
 	@FXML ProgressBar enemy1Health, enemy2Health, enemy3Health, mcHealth, partnerHealth;
 	@FXML ProgressBar enemy1Energy, enemy2Energy, enemy3Energy, mcEnergy, partnerEnergy;
 	@FXML ImageView enemy1Image, enemy2Image, enemy3Image, mcImage, partnerImage;
+	@FXML Button leaveRoom;
 	
 	private R_Battle currentRoom;
+	private String textOutput;
+	
+	private Timer timer;
+	private TimerTask task;
+	private final int timerDelay = 2000;
 	
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+	    actionText.setWrappingWidth(160);
     }
 	public void delayedInitialize(){
 		// Lets the current room be updated first before initialization
-		actionText.setText("What's the plan?");
+		textOutput = "What's the plan?";
 		completeRoom();
 		updateStats();
+		textOutput = "";
 	}
     
 	// General Methods
@@ -64,6 +78,24 @@ public class BattleController extends SuperController implements Initializable {
 		
 		tlg.mc.targetSelect(currentRoom.getAllEnemies().get(enemyIndex));
 		tlg.partner.targetSelect(currentRoom.getAllEnemies().get(enemyIndex));
+	}
+	
+	// Button Disabling
+	public void disableButtons() {
+		mcAttackButton.setDisable(true);
+		mcSkillButton.setDisable(true);
+		mcStallButton.setDisable(true);
+		partnerAttackButton.setDisable(true);
+		partnerSkillButton.setDisable(true);
+		partnerStallButton.setDisable(true);
+	}
+	public void enableButtons() {
+		mcAttackButton.setDisable(false);
+		mcSkillButton.setDisable(false);
+		mcStallButton.setDisable(false);
+		partnerAttackButton.setDisable(false);
+		partnerSkillButton.setDisable(false);
+		partnerStallButton.setDisable(false);
 	}
 	
 	// Utility Methods (Room Handling)
@@ -81,12 +113,10 @@ public class BattleController extends SuperController implements Initializable {
 		}
 		
 		currentRoom.completeRoom();
-		mcAttackButton.setDisable(true);
-		mcSkillButton.setDisable(true);
-		mcStallButton.setDisable(true);
-		partnerAttackButton.setDisable(true);
-		partnerSkillButton.setDisable(true);
-		partnerStallButton.setDisable(true);
+		this.disableButtons();
+		
+		leaveRoom.setVisible(true);
+		leaveRoom.setDisable(false);
 		
 		actionText.setText("This dungeon has been cleared!");
 	}
@@ -147,17 +177,95 @@ public class BattleController extends SuperController implements Initializable {
 	public void updateStats() {
 		updateEnemyStats();
 		updatePlayerStats();
+		actionText.setText(textOutput);
 	}
 	
 	// Combat Methods
+	class enemyAttackDelay extends TimerTask {
+		private ActionEvent e;
+		
+		enemyAttackDelay(ActionEvent e) {
+			this.e = e;
+		}
+		
+		@Override
+		public void run() {
+			Platform.runLater(() ->{
+				System.out.println("Action was delayed");				
+				
+				textOutput = "";
+				for(Enemy enemy : currentRoom.getAllEnemies()) {
+					if(!enemy.isDead()) {
+						enemy.targetSelect();
+						int initialHP = enemy.getTarget().getHealth();
+						enemy.attack();
+						textOutput += enemy.getName() + " attacked " + enemy.getTargetName()
+								+ " and dealt " + Integer.toString(enemy.getAttack() + enemy.getWeapon().getAtkBonus())
+								+ " damage!\n";
+						int damage = initialHP - enemy.getTarget().getHealth();
+						// Checks if the target is a Rouge and if it took no damage (dodged)
+						if(enemy.getTarget().getClass().getSimpleName().equals("P_Rogue") && damage == 0){
+							textOutput += enemy.getTargetName() + " dodged the attack!\n"; 
+						}
+						// Checks if the target is a Knight and if it took less damage (resisted)
+						if(enemy.getTarget().getClass().getSimpleName().equals("P_Knight") && damage < enemy.getAttack() + enemy.getWeapon().getAtkBonus()){
+							textOutput += enemy.getTargetName() + " stood firm and resisted part of the damage!\n"; 
+						}
+						if(enemy.getTarget().isDead()) {
+							openNewWindow("Lose.fxml", e);
+						}
+					}
+				}
+				updateStats();
+			});
+		}
+	}
+	class skillDecreaseDelay extends TimerTask {	
+		@Override
+		public void run() {
+			Platform.runLater(() ->{
+				System.out.println("Action was delayed");				
+				
+				textOutput = "";
+				
+				ArrayList<String> removedEffects = tlg.mc.decreaseAllEffectDurations();
+				for(String effect : removedEffects) {
+					textOutput += tlg.mc.getName() + "'s \"" + effect + "\" ended!\n";
+				}
+				removedEffects = tlg.partner.decreaseAllEffectDurations();
+				for(String effect : removedEffects) {
+					textOutput += tlg.partner.getName() + "'s \"" + effect + "\" ended!\n";
+				}
+
+				textOutput += "What's the Plan?";
+				
+				enableButtons();
+				updateStats();
+	
+				timer.cancel();
+			});
+		}
+
+	}
+	public void endTurn(ActionEvent e) {		
+		disableButtons();
+		updateStats();
+		
+		completeRoom();
+		
+		timer = new Timer();
+		System.out.println("Enemy attack was delayed");
+		timer.schedule(new enemyAttackDelay(e), timerDelay);
+		
+		timer.schedule(new skillDecreaseDelay(), 2*timerDelay);
+	}
 	public void attackEnemy(ActionEvent e, Player player) {				
 		int initialHealth = player.getTarget().getHealth();
 		Enemy initialTarget = (Enemy) player.getTarget();
 		
-		String textOutput = "";
+		textOutput = "";
 		
 		player.attack();
-		updateStats();
 		
 		int damage = initialHealth - initialTarget.getHealth();
 		System.out.println(initialTarget.getName() + "'s Initial Health: " + initialHealth);
@@ -176,11 +284,10 @@ public class BattleController extends SuperController implements Initializable {
 		}
 		else {
 			textOutput = player.getName() + " and " + player.getPartnerName()
-					+ " were too \ntired to fight! They rested and \nboth regained 50 energy!";
+					+ " were too tired to fight! They rested and both regained 50 energy!";
 		}
 		
-		actionText.setText(textOutput);
-		completeRoom();
+		endTurn(e);
 	}
 	@FXML public void mcAttack(ActionEvent e) {
 		attackEnemy(e,tlg.mc);
@@ -190,33 +297,42 @@ public class BattleController extends SuperController implements Initializable {
 	}
 	
 	@FXML public void stall(ActionEvent e) {
-		String textOutput = "";
+		textOutput = "";
 		
 		tlg.mc.stall();
-		updateStats();
 		
 		textOutput = tlg.mc.getName() + " and " + tlg.partner.getName()
 					+ " stalled\n and both regained 50 energy!";
+		
+		endTurn(e);
 	}
 	
 	public void skill(ActionEvent e, Player player) {
-		String textOutput;
+		int initialEnergy = player.getEnergy();
 		
 		String order = player.getClass().getSimpleName().substring(2);
 		player.useSkill();
 		
+		int finalEnergy = player.getEnergy();
+		
+		if(initialEnergy < finalEnergy){
+			textOutput = player.getName() + " didn't have enough energy to use their skill! "
+					+ tlg.mc.getName() + " and " + tlg.partner.getName()
+					+ " stalled\n and both regained 50 energy!";
+		}
+		else {
 		switch(order) {
 			case ("Archer"):
-				textOutput = player.getName() + " concentrated on his foes!\n";
+				textOutput = player.getName() + " concentrated on their foes!\n";
 				break;
 			case ("Bard"):
-				textOutput = player.getName() + " played a little tune! your party regained 150 energy!";
+				textOutput = player.getName() + " played a little tune! Your party regained 150 energy!";
 				break;
 			case ("Cleric"):
-				textOutput = player.getName() + " cast a revival spell! Your party healed by 40 hp!";
+				textOutput = player.getName() + " cast a revival spell! Your party healed by 240 hp!";
 				break;
 			case ("Knight"):
-				textOutput = player.getName() + " gathered his resolve!\n";
+				textOutput = player.getName() + " gathered their resolve!\n";
 				break;
 			case ("Mage"):
 				textOutput = player.getName() + " cast a powerful explosion dealing " + player.getAttack() + " damage to all enemies!\n";
@@ -229,9 +345,7 @@ public class BattleController extends SuperController implements Initializable {
 				break;
 		}
 		
-		actionText.setText(textOutput);
-		updateStats();
-		completeRoom();
+		endTurn(e);
 	}
 	@FXML public void mcSkill(ActionEvent e) {
 		skill(e, tlg.mc);
