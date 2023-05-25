@@ -14,14 +14,13 @@ public class P_Bard extends Player{
 	}
 
 	public void useSkill() {
-		int cost = 100;
+		int cost = 50;
 		try {
 			this.useEnergy(cost);
-			System.out.printf("%s played a little tune! %s and %s regained 150 energy!",
-											 this.getName(), this.getName(), this.getPartnerName());
-			this.useEnergy(cost);
-			this.gainEnergy(150);
-			this.getPartner().gainEnergy(150);
+			System.out.printf("%s played a little tune! %s regained 150 energy!\n",
+											 this.getName(), this.getPartnerName());
+			this.gainEnergy(25);
+			this.getPartner().gainEnergy(100);
 		}
 		catch (NoEnergyException NEE) {
 			this.stall();
