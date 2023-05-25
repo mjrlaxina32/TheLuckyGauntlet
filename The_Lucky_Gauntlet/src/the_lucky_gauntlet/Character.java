@@ -14,7 +14,8 @@ public abstract class Character {
 	protected Character target;
 	protected Weapon weapon;
 	protected ArrayList<String> effects = new ArrayList<String>();
-
+	protected ArrayList<Integer> effectDurations = new ArrayList<Integer>();
+	
 	public Random rand = new Random();
 	public Scanner sc = new Scanner(System.in);
 
@@ -23,7 +24,7 @@ public abstract class Character {
 		filename = f;
 		maxHealth = rand.nextInt(25) + 25;
 		health = maxHealth;
-		attack = rand.nextInt(10) + 10;
+		attack = rand.nextInt(8) + 12;
 		maxEnergy = rand.nextInt(100) + 100;
 		energy = maxEnergy;
 
@@ -76,6 +77,43 @@ public abstract class Character {
 		return false;
 	}
 
+	// Effect Manipulation
+	public void addEffect(String effect,int duration) {
+		this.effects.add(effect);
+		this.effectDurations.add(duration);
+	}
+	public String decreaseEffectDuration(String effect) {
+		int effectIndex = effects.indexOf(effect);
+		
+		if(effectIndex != -1) {
+			effectDurations.set(effectIndex, effectDurations.get(effectIndex)-1);
+			System.out.println(effect + ": " + effectDurations.get(effectIndex));
+			if(effectDurations.get(effectIndex) == 0) {
+				String removedEffect = effects.get(effectIndex);
+				effects.remove(effectIndex);
+				effectDurations.remove(effectIndex);
+				return removedEffect;
+			}
+			return "";
+		}
+		return "";
+	}
+	public ArrayList<String> decreaseAllEffectDurations() {
+		System.out.println(effects);
+		ArrayList<String> endedEffects = new ArrayList<>();
+		
+		for(int i=0; i<effects.size(); i++) {
+			System.out.println(effects.get(i));
+			String clearedEffect = this.decreaseEffectDuration(effects.get(i));
+			System.out.println(clearedEffect);
+			if (!clearedEffect.equals("")) {
+				endedEffects.add(clearedEffect);
+			}
+		}
+		
+		return endedEffects;
+	}
+	
 	// Base Value Re-randomization
 	public void resetAtkValue(int randFactor) {
 		int baseFactor = 20 - randFactor;
