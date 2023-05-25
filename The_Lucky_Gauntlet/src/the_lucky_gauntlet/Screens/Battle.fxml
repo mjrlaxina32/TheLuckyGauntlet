@@ -46,12 +46,11 @@
                         <VBox prefHeight="41.0" prefWidth="160.0">
                            <children>
                               <Text fx:id="mcName" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Name" />
-                              <ProgressBar fx:id="mcHealth" prefWidth="200.0" progress="1.0" />
-                              <ProgressBar fx:id="mcEnergy" prefWidth="200.0" progress="0.58">
+                              <ProgressBar fx:id="mcHealth" prefWidth="200.0" progress="1.0">
                                  <effect>
                                     <ColorAdjust hue="1.0" />
-                                 </effect>
-                              </ProgressBar>
+                                 </effect></ProgressBar>
+                              <ProgressBar fx:id="mcEnergy" prefWidth="200.0" progress="0.58" />
                            </children>
                         </VBox>
                      </children>
@@ -72,12 +71,11 @@
                         <VBox prefHeight="41.0" prefWidth="160.0">
                            <children>
                               <Text fx:id="partnerName" strokeType="OUTSIDE" strokeWidth="0.0" text="Partner Name" />
-                              <ProgressBar fx:id="partnerHealth" prefWidth="200.0" progress="0.75" />
-                              <ProgressBar fx:id="partnerEnergy" prefWidth="200.0" progress="0.5">
+                              <ProgressBar fx:id="partnerHealth" prefWidth="200.0" progress="0.75">
                                  <effect>
                                     <ColorAdjust hue="1.0" />
-                                 </effect>
-                              </ProgressBar>
+                                 </effect></ProgressBar>
+                              <ProgressBar fx:id="partnerEnergy" prefWidth="200.0" progress="0.5" />
                            </children>
                         </VBox>
                         <ImageView fx:id="partnerImage" fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -98,6 +96,11 @@
             </VBox>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="125.0" stroke="BLACK" strokeType="INSIDE" width="180.0" GridPane.columnIndex="1" />
             <Text fx:id="actionText" strokeType="OUTSIDE" strokeWidth="0.0" text="DIALOGUE BOX" textAlignment="CENTER" GridPane.columnIndex="1" />
+            <Button fx:id="leaveRoom" disable="true" mnemonicParsing="false" onAction="#openPreviousWindow" prefHeight="25.0" prefWidth="180.0" text="Leave Room" visible="false" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets top="100.0" />
+               </GridPane.margin>
+            </Button>
          </children>
       </GridPane>
    </bottom>
@@ -107,12 +110,11 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Text fx:id="enemy1Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy 1" />
-                  <ProgressBar fx:id="enemy1Health" prefWidth="200.0" progress="0.69" />
-                  <ProgressBar fx:id="enemy1Energy" prefWidth="200.0" progress="0.5">
+                  <ProgressBar fx:id="enemy1Health" prefWidth="200.0" progress="0.69">
                      <effect>
-                        <ColorAdjust hue="1.0" />
-                     </effect>
-                  </ProgressBar>
+                        <ColorAdjust hue="0.96" />
+                     </effect></ProgressBar>
+                  <ProgressBar fx:id="enemy1Energy" prefWidth="200.0" progress="0.5" />
                   <ImageView fx:id="enemy1Image" fitHeight="115.0" fitWidth="125.0" onMouseClicked="#selectEnemy" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Sprites/Enemy.png" />
@@ -126,12 +128,11 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Text fx:id="enemy2Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy 2" />
-                  <ProgressBar fx:id="enemy2Health" prefWidth="200.0" progress="0.42" />
-                  <ProgressBar fx:id="enemy2Energy" prefWidth="200.0" progress="0.79">
+                  <ProgressBar fx:id="enemy2Health" prefWidth="200.0" progress="0.42">
                      <effect>
                         <ColorAdjust hue="1.0" />
-                     </effect>
-                  </ProgressBar>
+                     </effect></ProgressBar>
+                  <ProgressBar fx:id="enemy2Energy" prefWidth="200.0" progress="0.79" />
                   <ImageView fx:id="enemy2Image" fitHeight="115.0" fitWidth="125.0" onMouseClicked="#selectEnemy" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Sprites/Enemy.png" />
@@ -145,12 +146,11 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Text fx:id="enemy3Name" strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy 3" />
-                  <ProgressBar fx:id="enemy3Health" prefWidth="200.0" progress="0.99" />
-                  <ProgressBar fx:id="enemy3Energy" prefWidth="200.0" progress="1.0">
+                  <ProgressBar fx:id="enemy3Health" prefWidth="200.0" progress="0.99">
                      <effect>
                         <ColorAdjust hue="1.0" />
-                     </effect>
-                  </ProgressBar>
+                     </effect></ProgressBar>
+                  <ProgressBar fx:id="enemy3Energy" prefWidth="200.0" progress="1.0" />
                   <ImageView fx:id="enemy3Image" fitHeight="115.0" fitWidth="125.0" onMouseClicked="#selectEnemy" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Sprites/Enemy.png" />
