@@ -111,7 +111,7 @@ public class WeaponSelectController extends SuperController implements Initializ
     }
     
     @Override 
-    @FXML public void openPreviousWindow(ActionEvent e) throws IOException {
+    @FXML public void openPreviousWindow() {
 		switch (playerBr) {
                 case "mc":
                     tlg.mc = currUser;
