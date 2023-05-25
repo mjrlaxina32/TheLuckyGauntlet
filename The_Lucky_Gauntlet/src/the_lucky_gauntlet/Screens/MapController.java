@@ -43,6 +43,8 @@ public class MapController extends SuperController implements Initializable{
 		BattleController BController = loader.getController();
 		R_Battle newRoom = (R_Battle) Room.getRoom(roomIndex);
 		BController.enterRoom(newRoom);
+		tlg.mc.targetSelect(BController.getCurrentRoom().getAllEnemies().get(0));
+		tlg.partner.targetSelect(BController.getCurrentRoom().getAllEnemies().get(0));
 		
 		tlg.currentRoom = BController.getCurrentRoom();
 		BController.delayedInitialize();
