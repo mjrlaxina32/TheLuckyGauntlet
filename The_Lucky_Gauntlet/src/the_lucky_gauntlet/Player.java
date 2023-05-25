@@ -48,12 +48,14 @@ public class Player extends Character {
 	// Peaceful Room Actions
 	public void train() throws NoEnergyException {
 		this.useEnergy(25);
-		this.attack += 5;
+		this.attack += 2;
 	}
 
 	public void rest() {
 		this.gainEnergy(150);
 		partner.gainEnergy(150);
+		this.heal(20);
+		partner.heal(20);
 		System.out.printf("%s and %s took a long rest."
 				+ " Their energy went up by 150 and they now have energies of %d and %d\n",
 				this.getName(), partner.getName(), energy, partner.energy);
