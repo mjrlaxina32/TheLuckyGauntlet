@@ -25,29 +25,38 @@ import the_lucky_gauntlet.Exceptions.InvalidOrderException;
 public class SuperController {
 	public static ArrayList<Stage> stageHierarchy = new ArrayList<Stage>();
 	
-	protected FXMLLoader openNewWindow(String fileName, ActionEvent e) throws IOException{
-		// Getting the current Window
-		
-		Stage currentStage = (Stage)((Node) e.getSource()).getScene().getWindow();
+	protected FXMLLoader openNewWindow(String fileName, ActionEvent e) {
+		try {
+			// Getting the current Window
+			Stage currentStage = (Stage)((Node) e.getSource()).getScene().getWindow();
 
-		// Getting the next Screen
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fileName));
-		Parent root = loader.load();
-		Scene newScene = new Scene(root);
-		Stage secondStage = new Stage();
-		secondStage.setScene(newScene);
+			// Getting the next Screen
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(fileName));
+			Parent root = loader.load();
+			Scene newScene = new Scene(root);
+			Stage secondStage = new Stage();
+			secondStage.setScene(newScene);
 
-		// Adding the next screen to the screen hierarchy
-		SuperController.stageHierarchy.add(secondStage);
-		
-		
-		// Updating the screen
-		currentStage.hide();
-		secondStage.show();
+			// Adding the next screen to the screen hierarchy
+			SuperController.stageHierarchy.add(secondStage);
 
-		return loader;
+
+			// Updating the screen
+			currentStage.hide();
+			secondStage.show();
+
+			return loader;
+		}
+		catch(NullPointerException NPE) {
+			System.out.println("NullPointerException: Opening new screen terminated. Please make sure that the event that triggered the new screen is passed.");
+			return null;
+		}
+		catch(IOException IOE) {
+			System.out.println("IOException: Opening new screen terminated");
+			return null;
+		}
 	}
-	@FXML public void openPreviousWindow(ActionEvent e) throws IOException {
+	@FXML public void openPreviousWindow() {
 		int hierarchyLength = stageHierarchy.size();
 		Stage currentStage = stageHierarchy.get(hierarchyLength-1);
 		Stage previousStage = stageHierarchy.get(hierarchyLength-2);
