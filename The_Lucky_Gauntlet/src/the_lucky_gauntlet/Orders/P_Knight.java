@@ -7,8 +7,7 @@ public class P_Knight extends Player{
 	public P_Knight(String n, String t){
 		super(n,t,"Knight.png");
 		System.out.println("Order: Knight");
-		this.resetHealthValue(20);
-		this.resetHealthValue(8);
+		this.resetHealthValue(10);
 		Weapon sword = new Weapon("Sword","Door.png", "Knight", 6, 50);
 		this.gainWeapon(sword);
                 weapon = sword;
@@ -18,7 +17,7 @@ public class P_Knight extends Player{
 		try {
 			this.useEnergy(cost);
 			System.out.println(this.getName() + " gathered his resolve!");
-			this.effects.add("Unyielding Will");
+			this.addEffect("Unyielding Will", 7);
 		}
 		catch (NoEnergyException NEE) {
 			this.stall();
