@@ -330,6 +330,7 @@ public abstract class Character {
 			System.out.printf("%s used %d energy to attack %s and dealt %d damage!\n", name, 20, target.getName(),
 					totalDamage);
 			target.takeDamage(totalDamage);
+                        this.getWeapon().weaken();
 		}
 		catch(NoEnergyException NEE) {
 			this.stall();
