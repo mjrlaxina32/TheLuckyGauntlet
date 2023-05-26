@@ -35,7 +35,7 @@ public abstract class Room {
     /**
      * Scanner for user inputs
      */
-    public Scanner sc = new Scanner(System.in);
+	public Scanner sc = new Scanner(System.in);
 	/**
          * Creates a room and adds it to the map.
          * @param name Name of room
@@ -114,8 +114,6 @@ public abstract class Room {
 				new R_Battle("Room " + i, true);
 			}
 		}
-		
-		R_Battle bossRoom = new R_Battle("Room 18", false);
 	}
 	
 	// Battle Room Methods (Overriden in R_Battle and not used in other methods)
@@ -123,7 +121,7 @@ public abstract class Room {
          * Gets all enemies from the Enemy ArrayList.
          * @return Returns null
          */
-        public ArrayList<Enemy> getAllEnemies() {
+	public ArrayList<Enemy> getAllEnemies() {
 		return null;
 	} //can we just remove this then
 	// Won't be able to acces it in player. It's just a long story
