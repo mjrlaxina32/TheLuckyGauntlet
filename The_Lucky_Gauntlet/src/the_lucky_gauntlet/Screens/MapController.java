@@ -1,5 +1,11 @@
 package the_lucky_gauntlet.Screens;
 
+// Utility
+import java.util.ArrayList;
+
+// Utility
+import javafx.scene.control.Button;
+
 // JavaFX Set-up
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,9 +17,7 @@ import the_lucky_gauntlet.Rooms.*;
 
 // Events
 import javafx.event.ActionEvent;
-
-// Exceptions
-import java.io.IOException;
+import javafx.scene.input.MouseEvent;
 
 public class MapController extends SuperController implements Initializable{
 	private String lastFileName;
@@ -43,7 +47,7 @@ public class MapController extends SuperController implements Initializable{
 		((Button)event.getSource()).setPrefSize(50, 85);
 	}
 	
-	@FXML void openRoom(ActionEvent e) throws IOException {
+	@FXML void openRoom(ActionEvent e) {
 		String fullRoomData = e.getSource().toString();
 		int roomIndex = Integer.parseInt(fullRoomData.substring(14,16));
 		System.out.println(roomIndex);
@@ -60,7 +64,7 @@ public class MapController extends SuperController implements Initializable{
 			openBattle(e, roomIndex);
 		}
 	}
-	private void openBattle(ActionEvent e, int roomIndex) throws IOException{
+	private void openBattle(ActionEvent e, int roomIndex) {
 		FXMLLoader loader = openNewWindow("Battle.fxml", e);
 		BattleController BController = loader.getController();
 		R_Battle newRoom = (R_Battle) Room.getRoom(roomIndex);
@@ -71,7 +75,7 @@ public class MapController extends SuperController implements Initializable{
 		tlg.currentRoom = BController.getCurrentRoom();
 		BController.delayedInitialize();
 	}
-	private void openPrebattle(ActionEvent e, int roomIndex) throws IOException{
+	private void openPrebattle(ActionEvent e, int roomIndex) {
 		FXMLLoader loader = openNewWindow("Prebattle.fxml", e);
 		PrebattleController PController = loader.getController();
 		R_Peaceful newRoom = (R_Peaceful) Room.getRoom(roomIndex);
