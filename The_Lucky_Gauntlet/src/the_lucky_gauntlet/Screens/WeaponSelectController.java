@@ -113,25 +113,18 @@ public class WeaponSelectController extends SuperController implements Initializ
     @Override 
     @FXML public void openPreviousWindow() {
 		switch (playerBr) {
-                case "mc":
-                    tlg.mc = currUser;
-                    break;
-                case "partner":
-                    tlg.partner = currUser;
-                    break;
-                default:
-                    tlg.mc = currUser;
-                    break;
-                }
-                actionsource = "x";
-                int hierarchyLength = stageHierarchy.size();
-		Stage currentStage = stageHierarchy.get(hierarchyLength-1);
-		Stage previousStage = stageHierarchy.get(hierarchyLength-2);
-		
-		currentStage.hide();
-		previousStage.show();
-		
-		stageHierarchy.remove(currentStage);
+		case "mc":
+			tlg.mc = currUser;
+			break;
+		case "partner":
+			tlg.partner = currUser;
+			break;
+		default:
+			tlg.mc = currUser;
+			break;
+		}
+		actionsource = "x";
+		super.openPreviousWindow();
 	}
 }   
     
