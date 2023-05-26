@@ -25,11 +25,11 @@ public class WinController extends SuperController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {}
 
-    @FXML private void openMap(ActionEvent event) throws IOException {
-        openNewWindow("Map.fxml", event);		
+    @FXML private void openMap(ActionEvent e) {
+        openNewWindow("Map.fxml", e);		
     }
     
-    @FXML private void highlight(Event event) throws IOException {
+    @FXML private void highlight(Event event) {
         DropShadow dropShadow = new DropShadow();
         dropShadow.setColor(Color.GREEN);
         dropShadow.setHeight(5); 
@@ -39,7 +39,7 @@ public class WinController extends SuperController implements Initializable {
         ((ImageView)event.getSource()).setEffect(dropShadow);
     }
     
-    @FXML private void dehighlight(Event event) throws IOException {      
+    @FXML private void dehighlight(Event event) {      
         ((ImageView)event.getSource()).setEffect(null);
     }
     
