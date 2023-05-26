@@ -290,7 +290,7 @@ public class BattleController extends SuperController implements Initializable {
 		System.out.println(initialTarget.getName() + "'s Initial Health: " + initialHealth);
 		System.out.println(initialTarget.getName() + "'s Current Health: " + initialTarget.getHealth());
 		if(damage > 0) {
-			textOutput = player.getName() + " used 20 energy to \nattack "
+			textOutput = player.getName() + " used 20 energy to attack "
 					+ initialTarget.getName() + " and dealt " + damage + " \ndamage!";
 			if(player.hasEffect("Hawkeye")) {
 				if(damage > (player.getAttack()*2)) {
@@ -348,7 +348,7 @@ public class BattleController extends SuperController implements Initializable {
 				textOutput = player.getName() + " played a little tune! Your party regained 150 energy!";
 				break;
 			case ("Cleric"):
-				textOutput = player.getName() + " cast a revival spell! Your party healed by 240 hp!";
+				textOutput = player.getName() + " cast a revival spell! Your party healed by 20 hp!";
 				break;
 			case ("Knight"):
 				textOutput = player.getName() + " gathered their resolve!\n";
