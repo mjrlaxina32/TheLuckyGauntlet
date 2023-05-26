@@ -26,7 +26,7 @@ public class P_Knight extends Player{
 	public void takeDamage(int dmg){
 		if(this.effects.contains("Unyielding Will")){
 			dmg /= 2;
-			System.out.printf("%s tanked the hit and only recieved %d damage!",
+			System.out.printf("%s tanked the hit and only recieved %d damage!\n",
 												this.getName(), dmg);
 		}
 		
