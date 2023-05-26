@@ -32,7 +32,9 @@ public class MapController extends SuperController implements Initializable{
 		int roomIndex = Integer.parseInt(fullRoomData.substring(14,16));
 		Room highlightedRoom = map.get(roomIndex);
 		
-		((Button)event.getSource()).setPrefSize(55, 93.5);
+		double currentHeight = ((Button)event.getSource()).getHeight();
+		double currentWidth = ((Button)event.getSource()).getWidth();
+		((Button)event.getSource()).setPrefSize(currentWidth*1.1, currentHeight*1.1);
 		
 		if(highlightedRoom.isCompleted()) {
 			((Button)event.getSource()).setStyle("-fx-border-color: green; -fx-border-width: 3;");		
@@ -43,7 +45,9 @@ public class MapController extends SuperController implements Initializable{
 	}
 	@FXML private void dehighlight(MouseEvent event){      
 		((Button)event.getSource()).setStyle("");
-		((Button)event.getSource()).setPrefSize(50, 85);
+		double currentHeight = ((Button)event.getSource()).getHeight();
+		double currentWidth = ((Button)event.getSource()).getWidth();
+		((Button)event.getSource()).setPrefSize(currentWidth/1.1, currentHeight/1.1);
 	}
 	
 	@FXML void openRoom(ActionEvent e) {
@@ -54,13 +58,30 @@ public class MapController extends SuperController implements Initializable{
 		Room newRoom = Room.getRoom(roomIndex);
 		String roomType = newRoom.getClass().toString().substring(33);
 		
+		boolean bossIsOpen = false;
 		
-		if (roomType.equals("Peaceful")) {
-			System.out.println("Open prebattle");
-			openPrebattle(e, roomIndex);
+		if(roomIndex == 18) {
+			bossIsOpen = true;
+			for(Room r : map) {
+				if(!r.isCompleted()) {
+					bossIsOpen = false;
+					break;
+				}
+			}
+			
+			if(bossIsOpen) {
+				openBattle(e, roomIndex);
+				return;
+			}
 		}
-		else if(roomType.equals("Battle")) {
-			openBattle(e, roomIndex);
+		else {
+			if (roomType.equals("Peaceful")) {
+				System.out.println("Open prebattle");
+				openPrebattle(e, roomIndex);
+			}
+			else if(roomType.equals("Battle")) {
+				openBattle(e, roomIndex);
+			}
 		}
 	}
 	private void openBattle(ActionEvent e, int roomIndex) {
