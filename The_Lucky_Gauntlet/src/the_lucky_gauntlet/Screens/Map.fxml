@@ -23,7 +23,7 @@
    <center>
       <FlowPane alignment="CENTER" prefHeight="303.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane alignment="CENTER" prefHeight="154.0" prefWidth="499.0">
+            <GridPane fx:id="mainRooms" alignment="CENTER" prefHeight="154.0" prefWidth="499.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -40,24 +40,24 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="room00" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" />
-                  <Button fx:id="room08" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="8" />
-                  <Button fx:id="room09" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" text="⌂" GridPane.rowIndex="1" />
-                  <Button fx:id="room17" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="8" GridPane.rowIndex="1" />
-                  <Button fx:id="room15" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                  <Button fx:id="room06" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="6" />
-                  <Button fx:id="room16" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                  <Button fx:id="room07" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="7" />
-                  <Button fx:id="room05" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="5" />
-                  <Button fx:id="room14" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                  <Button fx:id="room03" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="3" />
-                  <Button fx:id="room12" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <Button fx:id="room04" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="4" />
-                  <Button fx:id="room13" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                  <Button fx:id="room02" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" text="✨" GridPane.columnIndex="2" />
-                  <Button fx:id="room11" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Button fx:id="room01" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="1" />
-                  <Button fx:id="room10" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               <Button fx:id="room00" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" />
+               <Button fx:id="room01" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="1" />
+				   <Button fx:id="room02" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" text="✨" GridPane.columnIndex="2" />
+				   <Button fx:id="room03" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="3" />
+				   <Button fx:id="room04" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="4" />
+				   <Button fx:id="room05" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="5" />
+				   <Button fx:id="room06" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="6" />
+				   <Button fx:id="room07" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="7" />
+               <Button fx:id="room08" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="8" />
+               <Button fx:id="room09" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" text="⌂" GridPane.rowIndex="1" />                  
+               <Button fx:id="room10" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               <Button fx:id="room11" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+				   <Button fx:id="room12" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+               <Button fx:id="room13" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+				   <Button fx:id="room14" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+				   <Button fx:id="room15" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+               <Button fx:id="room16" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+				   <Button fx:id="room17" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="8" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Button fx:id="room18" mnemonicParsing="false" prefHeight="219.0" prefWidth="76.0" text="Boss">
