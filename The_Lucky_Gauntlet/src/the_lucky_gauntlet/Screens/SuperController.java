@@ -24,6 +24,7 @@ import the_lucky_gauntlet.Exceptions.InvalidOrderException;
 
 public class SuperController {
 	public static ArrayList<Stage> stageHierarchy = new ArrayList<Stage>();
+	public static String actionsource = "mc"; //whether action is from mc or prt //!
 	
 	protected FXMLLoader openNewWindow(String fileName, ActionEvent e) {
 		try {
