@@ -65,14 +65,17 @@ public class BattleController extends SuperController implements Initializable {
 	public void delayedInitialize(){
 		// Lets the current room be updated first before initialization
 		textOutput = "What's the plan?";
-		completeRoom();
 		updateStats();
 		textOutput = "";
+		completeRoom();
 	}
     
 	// General Methods
 	@FXML void openPause(ActionEvent e) {
 		openNewWindow("Pause.fxml", e);
+	}
+	@FXML void openVictory(ActionEvent e) {
+		openNewWindow("Win.fxml", e);
 	}
 	@FXML public void selectEnemy(MouseEvent e) {
 		String fullEnemyData = e.getSource().toString();
@@ -82,17 +85,17 @@ public class BattleController extends SuperController implements Initializable {
 		tlg.partner.targetSelect(currentRoom.getAllEnemies().get(enemyIndex));
 	}
         
-        @FXML private void highlight(MouseEvent event){
-            DropShadow dropShadow = new DropShadow();
-            dropShadow.setColor(Color.GREEN);
-            dropShadow.setHeight(15); 
-            dropShadow.setWidth(15); 
-            dropShadow.setRadius(15); 
+	// Enemy on-hover highlighting
+	@FXML private void highlight(MouseEvent event){
+		DropShadow dropShadow = new DropShadow();
+		dropShadow.setColor(Color.GREEN);
+		dropShadow.setHeight(15); 
+		dropShadow.setWidth(15); 
+		dropShadow.setRadius(15); 
 
-            ((ImageView)event.getSource()).setEffect(dropShadow);
-            ((ImageView)event.getSource()).setFitHeight(230);
-        }
-    
+		((ImageView)event.getSource()).setEffect(dropShadow);
+		((ImageView)event.getSource()).setFitHeight(230);
+	}
         @FXML private void dehighlight(MouseEvent event){      
             ((ImageView)event.getSource()).setEffect(null);
             ((ImageView)event.getSource()).setFitHeight(115);
@@ -130,13 +133,13 @@ public class BattleController extends SuperController implements Initializable {
 			}
 		}
 		
+		System.out.println("Dungeon has been cleared");
+		
 		currentRoom.completeRoom();
 		this.disableButtons();
 		
-		leaveRoom.setVisible(true);
 		leaveRoom.setDisable(false);
-		
-		actionText.setText("This dungeon has been cleared!");
+		leaveRoom.fire();
 	}
 	
 	// Display Updating Methods
