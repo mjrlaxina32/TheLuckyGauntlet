@@ -1,11 +1,13 @@
 package the_lucky_gauntlet.Screens;
 
 // Utility
-import java.util.ArrayList;
+import the_lucky_gauntlet.*;
+import the_lucky_gauntlet.Rooms.R_Peaceful;
 
 // JavaFX Set-up
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.*;
 
 // Components
@@ -17,7 +19,8 @@ import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
 // Exceptions
-import the_lucky_gauntlet.Exceptions.NoEnergyException;
+import java.io.IOException;
+import the_lucky_gauntlet.Exceptions.*;
 
 // Lucky Gauntlet Imports
 import the_lucky_gauntlet.*;
@@ -78,17 +81,94 @@ public class PrebattleController extends SuperController implements Initializabl
 	}
 	
 	// Window Opening Methods
-	@FXML void openPause(ActionEvent e) {
+	@FXML void openPause(ActionEvent e) throws IOException{
 		openNewWindow("Pause.fxml", e);
 	}
-	@FXML void openWeaponSelect(ActionEvent e) {
+        
+        //Individual Activities
+	@FXML void openWeaponSelect(ActionEvent e) throws IOException{
                 actionsource = (((Button)e.getSource()).getId()).replace("ChangeWeapon","");
                 System.out.println(actionsource);
 		openNewWindow("WeaponSelect.fxml", e);
 	}
 	
+        @FXML void findWeapon(ActionEvent e){
+                actionsource = (((Button)e.getSource()).getId()).replace("FindWeapon","");
+                switch (actionsource) {
+                case "mc":
+                    tlg.mc.newWeapon();
+                    break;
+                case "partner":
+                    tlg.partner.newWeapon();;
+                    break;      
+                default:
+                    tlg.mc.newWeapon();
+                    break;      
+                }
+        }
+        
+        @FXML void enhanceWeapon(ActionEvent e){
+                String textOutput = null;
+                actionsource = (((Button)e.getSource()).getId()).replace("EnhanceWeapon","");
+                switch (actionsource) {
+                case "mc":
+                    tlg.mc.getWeapon().enhance();
+                    textOutput = tlg.mc.getName() + " enhanced their " + tlg.mc.getWeapon().getName() + ".\n The attack bonus is now " + tlg.mc.getWeapon().getAtkBonus() + "."; 
+                    break;
+                case "partner":
+                    tlg.partner.getWeapon().enhance();
+                    textOutput = tlg.partner.getName() + " enhanced their " + tlg.partner.getWeapon().getName() + ".\n The attack bonus is now " + tlg.partner.getWeapon().getAtkBonus() + "."; 
+                    break;      
+                default:
+                    tlg.mc.getWeapon().enhance();
+                    break;      
+                }
+                performAction(textOutput);
+                currentRoom.reduceAc();
+        }
+	
+        @FXML void repairWeapon(ActionEvent e){
+                String textOutput = null;
+                actionsource = (((Button)e.getSource()).getId()).replace("RepairWeapon","");
+                switch (actionsource) {
+                case "mc":
+                    try{
+                        tlg.mc.getWeapon().repair();
+                        textOutput = tlg.mc.getName() + " repaired their " + tlg.mc.getWeapon().getName() + ".\n The durability is now " + tlg.mc.getWeapon().getDurability() +  "/" +  tlg.mc.getWeapon().getMaxDurability() + "."; 
+                        break;
+                    }
+                    catch(BeyondRangeException BRE){
+                        System.out.println("Max durability");
+                        textOutput = "The weapon is at its maximum durability.";                        
+                        break;
+                    }
+                case "partner":
+                    try{
+                        tlg.partner.getWeapon().repair();
+                        textOutput = tlg.partner.getName() + " repaired their " + tlg.partner.getWeapon().getName() + ".\n The durability is now " + tlg.partner.getWeapon().getDurability() +  "/" +  tlg.partner.getWeapon().getMaxDurability() + "."; 
+                        break;
+                    }
+                    catch(BeyondRangeException BRE){
+                        System.out.println("Max durability");
+                        textOutput = "The weapon is at its maximum durability.";
+                        break;
+                    }
+                default:
+                    try{
+                        tlg.mc.getWeapon().repair();
+                        break;
+                    }
+                    catch(BeyondRangeException BRE){
+                        System.out.println("Max durability");
+                        break;
+                    }
+                }
+                performAction(textOutput);
+                currentRoom.reduceAc();
+        }
+        
 	// Party-wide Activities
-	@FXML void rest(ActionEvent e) {
+	@FXML void rest(ActionEvent e) throws IOException{
 		int mcInitialEnergy = tlg.mc.getEnergy();
 		int partnerInitialEnergy = tlg.partner.getEnergy();
 		
@@ -100,7 +180,7 @@ public class PrebattleController extends SuperController implements Initializabl
 
 		performAction(textOutput);
 	}
-	@FXML void train(ActionEvent e) {
+	@FXML void train(ActionEvent e) throws IOException{
 		String textOutput;
 		int mcInitialEnergy = tlg.mc.getEnergy();
 		int partnerInitialEnergy = tlg.partner.getEnergy();
