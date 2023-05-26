@@ -60,6 +60,8 @@ public class PrebattleController extends SuperController implements Initializabl
 			
 			rest.setDisable(true);
 			train.setDisable(true);
+			
+			currentRoom.completeRoom();
 		}
 	}
 	private void performAction(String textOutput) {
