@@ -5,6 +5,7 @@
 package the_lucky_gauntlet.Screens;	
 
 // Utility
+import java.io.IOException;
 import java.util.ArrayList;
 
 // Java-FX Set-up
@@ -30,7 +31,9 @@ import the_lucky_gauntlet.*;
 
 // Events
 import javafx.event.ActionEvent;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 
 /**
@@ -79,6 +82,22 @@ public class BattleController extends SuperController implements Initializable {
 		tlg.mc.targetSelect(currentRoom.getAllEnemies().get(enemyIndex));
 		tlg.partner.targetSelect(currentRoom.getAllEnemies().get(enemyIndex));
 	}
+        
+        @FXML private void highlight(MouseEvent event){
+            DropShadow dropShadow = new DropShadow();
+            dropShadow.setColor(Color.GREEN);
+            dropShadow.setHeight(15); 
+            dropShadow.setWidth(15); 
+            dropShadow.setRadius(15); 
+
+            ((ImageView)event.getSource()).setEffect(dropShadow);
+            ((ImageView)event.getSource()).setFitHeight(230);
+        }
+    
+        @FXML private void dehighlight(MouseEvent event){      
+            ((ImageView)event.getSource()).setEffect(null);
+            ((ImageView)event.getSource()).setFitHeight(115);
+        }
 	
 	// Button Disabling
 	public void disableButtons() {
@@ -347,6 +366,7 @@ public class BattleController extends SuperController implements Initializable {
 		
 		endTurn(e);
 	}
+        }
 	@FXML public void mcSkill(ActionEvent e) {
 		skill(e, tlg.mc);
 	}
@@ -354,4 +374,8 @@ public class BattleController extends SuperController implements Initializable {
 		skill(e, tlg.partner);
 	}
 }
+
+
+
+
 

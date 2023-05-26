@@ -115,7 +115,7 @@
                         <ColorAdjust hue="0.96" />
                      </effect></ProgressBar>
                   <ProgressBar fx:id="enemy1Energy" prefWidth="200.0" progress="0.5" />
-                  <ImageView fx:id="enemy1Image" fitHeight="115.0" fitWidth="125.0" onMouseClicked="#selectEnemy" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="enemy1Image" fitHeight="115.0" fitWidth="125.0" onMouseClicked="#selectEnemy" onMouseEntered="#highlight" onMouseExited="#dehighlight" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Sprites/Enemy.png" />
                      </image>
@@ -133,7 +133,7 @@
                         <ColorAdjust hue="1.0" />
                      </effect></ProgressBar>
                   <ProgressBar fx:id="enemy2Energy" prefWidth="200.0" progress="0.79" />
-                  <ImageView fx:id="enemy2Image" fitHeight="115.0" fitWidth="125.0" onMouseClicked="#selectEnemy" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="enemy2Image" fitHeight="115.0" fitWidth="125.0" onMouseClicked="#selectEnemy" onMouseEntered="#highlight" onMouseExited="#dehighlight" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Sprites/Enemy.png" />
                      </image>
@@ -151,7 +151,7 @@
                         <ColorAdjust hue="1.0" />
                      </effect></ProgressBar>
                   <ProgressBar fx:id="enemy3Energy" prefWidth="200.0" progress="1.0" />
-                  <ImageView fx:id="enemy3Image" fitHeight="115.0" fitWidth="125.0" onMouseClicked="#selectEnemy" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="enemy3Image" fitHeight="115.0" fitWidth="125.0" onMouseClicked="#selectEnemy" onMouseEntered="#highlight" onMouseExited="#dehighlight" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Sprites/Enemy.png" />
                      </image>
