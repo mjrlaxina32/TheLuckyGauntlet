@@ -21,7 +21,11 @@ import the_lucky_gauntlet.Exceptions.InvalidOrderException;
 import the_lucky_gauntlet.Orders.*;
 import the_lucky_gauntlet.Rooms.*;
 import the_lucky_gauntlet.Screens.*;
-
+/**
+ * This is the main class of the application.
+ * @author Athena Kimwell
+ * @version 5-26-23
+ */
 public class tlg extends Application {
 	public static Player mc, partner;
 	public static Room currentRoom;

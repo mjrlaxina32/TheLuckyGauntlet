@@ -12,10 +12,25 @@ import the_lucky_gauntlet.Exceptions.*;
  */
 public class Weapon {
     private String name, order, filename;
-    protected int atkBonus,durability, maxDurability;
+
+    /**
+     * Weapon's attack bonus
+     */
+    protected int atkBonus,
+
+    /**
+     * Weapon's durability
+     */
+    durability,
+
+    /**
+     * Weapon's maximum durability
+     */
+    maxDurability;
     private Random rand = new Random();
     
     /**
+     * Creates a weapon with name, attack bonus, and maximum durability.
      * @param n Name of weapon
      * @param aB Value of weapon Attack Bonus
      * @param mD Max Durability of weapon
@@ -28,6 +43,7 @@ public class Weapon {
 	} //!
          
     /**
+     * Creates a weapon with name, filename, attack bonus, order, and maximum durability.
      * @param n Name of weapon
      * @param f Filename of weapon
      * @param o Order of weapon
@@ -44,6 +60,7 @@ public class Weapon {
 	}
 	
     /**
+     * Creates a weapon with name, order, attack bonus, and maximum durability.
      * @param n Name of weapon
      * @param o Order of weapon
      * @param aB Value of weapon Attack Bonus
