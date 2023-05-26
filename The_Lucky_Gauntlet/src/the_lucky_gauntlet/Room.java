@@ -114,6 +114,8 @@ public abstract class Room {
 				new R_Battle("Room " + i, true);
 			}
 		}
+		
+		R_Battle bossRoom = new R_Battle("Room 18", false);
 	}
 	
 	// Battle Room Methods (Overriden in R_Battle and not used in other methods)
