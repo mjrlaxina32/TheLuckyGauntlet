@@ -96,7 +96,7 @@
             </VBox>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="125.0" stroke="BLACK" strokeType="INSIDE" width="180.0" GridPane.columnIndex="1" />
             <Text fx:id="actionText" strokeType="OUTSIDE" strokeWidth="0.0" text="DIALOGUE BOX" textAlignment="CENTER" GridPane.columnIndex="1" />
-            <Button fx:id="leaveRoom" disable="true" mnemonicParsing="false" onAction="#openPreviousWindow" prefHeight="25.0" prefWidth="180.0" text="Leave Room" visible="false" GridPane.columnIndex="1">
+            <Button fx:id="leaveRoom" disable="true" mnemonicParsing="false" onAction="#openVictory" prefHeight="25.0" prefWidth="180.0" text="Leave Room" visible="false" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets top="100.0" />
                </GridPane.margin>
