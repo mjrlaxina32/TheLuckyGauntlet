@@ -136,11 +136,16 @@ public class Weapon {
      * @throws BeyondRangeException if the durability is equal to the max durability 
      */
     public void repair() throws BeyondRangeException{
-		if(durability == maxDurability){
+		if(durability >= maxDurability){
 			throw new BeyondRangeException("The weapon has reached its maximum durability.");
 		}
 		else{
-		durability += 10;
+                        if (maxDurability-durability < 5 && maxDurability-durability > 0){
+                            durability = maxDurability;
+		}
+                        else{
+                            durability += 5;
+	}
 		}
 	}
 
@@ -148,7 +153,7 @@ public class Weapon {
      *Decreases current durability of the weapon by 5
      */
     public void weaken() {
-		durability -= 5;
+		durability -= 2;
 		if(durability <= 0)
 			durability = 0;
 	}
