@@ -24,6 +24,13 @@ public class R_Peaceful extends Room{
 		actions = aC;
 	}
 	
+        /**
+         * Reduces action count.
+         */
+	public void reduceAc(){
+            actions--;
+        }
+        
 	// Getter Methods
         /**
          * @return Returns action count
