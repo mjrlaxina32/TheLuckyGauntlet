@@ -17,9 +17,31 @@ import java.io.IOException;
 
 public class MapController extends SuperController implements Initializable{
 	private String lastFileName;
+	private ArrayList<Room> map;
 	
 	@Override
-	public void initialize(URL url, ResourceBundle rb) {}
+	public void initialize(URL url, ResourceBundle rb) {
+		map = Room.getAllRooms();	
+	}
+	
+	@FXML private void highlight(MouseEvent event){
+		String fullRoomData = event.getSource().toString();
+		int roomIndex = Integer.parseInt(fullRoomData.substring(14,16));
+		Room highlightedRoom = map.get(roomIndex);
+		
+		((Button)event.getSource()).setPrefSize(55, 93.5);
+		
+		if(highlightedRoom.isCompleted()) {
+			((Button)event.getSource()).setStyle("-fx-border-color: green; -fx-border-width: 3;");		
+		}
+		else {
+			((Button)event.getSource()).setStyle("-fx-border-color: red; -fx-border-width: 3;");	
+		}
+	}
+	@FXML private void dehighlight(MouseEvent event){      
+		((Button)event.getSource()).setStyle("");
+		((Button)event.getSource()).setPrefSize(50, 85);
+	}
 	
 	@FXML void openRoom(ActionEvent e) throws IOException {
 		String fullRoomData = e.getSource().toString();
