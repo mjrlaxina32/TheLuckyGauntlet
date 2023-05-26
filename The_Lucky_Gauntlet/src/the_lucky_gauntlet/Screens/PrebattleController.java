@@ -1,13 +1,11 @@
 package the_lucky_gauntlet.Screens;
 
 // Utility
-import the_lucky_gauntlet.*;
-import the_lucky_gauntlet.Rooms.R_Peaceful;
+import java.util.ArrayList;
 
 // JavaFX Set-up
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.*;
 
 // Components
@@ -19,7 +17,6 @@ import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
 // Exceptions
-import java.io.IOException;
 import the_lucky_gauntlet.Exceptions.NoEnergyException;
 
 // Lucky Gauntlet Imports
@@ -79,17 +76,17 @@ public class PrebattleController extends SuperController implements Initializabl
 	}
 	
 	// Window Opening Methods
-	@FXML void openPause(ActionEvent e) throws IOException{
+	@FXML void openPause(ActionEvent e) {
 		openNewWindow("Pause.fxml", e);
 	}
-	@FXML void openWeaponSelect(ActionEvent e) throws IOException{
+	@FXML void openWeaponSelect(ActionEvent e) {
                 actionsource = (((Button)e.getSource()).getId()).replace("ChangeWeapon","");
                 System.out.println(actionsource);
 		openNewWindow("WeaponSelect.fxml", e);
 	}
 	
 	// Party-wide Activities
-	@FXML void rest(ActionEvent e) throws IOException{
+	@FXML void rest(ActionEvent e) {
 		int mcInitialEnergy = tlg.mc.getEnergy();
 		int partnerInitialEnergy = tlg.partner.getEnergy();
 		
@@ -101,7 +98,7 @@ public class PrebattleController extends SuperController implements Initializabl
 
 		performAction(textOutput);
 	}
-	@FXML void train(ActionEvent e) throws IOException{
+	@FXML void train(ActionEvent e) {
 		String textOutput;
 		int mcInitialEnergy = tlg.mc.getEnergy();
 		int partnerInitialEnergy = tlg.partner.getEnergy();
