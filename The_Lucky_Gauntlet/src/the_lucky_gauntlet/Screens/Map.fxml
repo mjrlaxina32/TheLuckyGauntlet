@@ -60,7 +60,7 @@
 				   <Button fx:id="room17" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="85.0" prefWidth="50.0" GridPane.columnIndex="8" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <Button fx:id="room18" mnemonicParsing="false" prefHeight="219.0" prefWidth="76.0" text="Boss">
+            <Button fx:id="room18" mnemonicParsing="false" onAction="#openRoom" onMouseEntered="#highlight" onMouseExited="#dehighlight" prefHeight="219.0" prefWidth="76.0" text="Boss">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
