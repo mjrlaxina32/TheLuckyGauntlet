@@ -5,7 +5,6 @@
 package the_lucky_gauntlet.Screens;	
 
 // Utility
-import java.io.IOException;
 import java.util.ArrayList;
 
 // Java-FX Set-up
@@ -72,7 +71,7 @@ public class BattleController extends SuperController implements Initializable {
 	}
     
 	// General Methods
-	@FXML void openPause(ActionEvent e) throws IOException{
+	@FXML void openPause(ActionEvent e) {
 		openNewWindow("Pause.fxml", e);
 	}
 	@FXML public void selectEnemy(MouseEvent e) {
@@ -291,9 +290,9 @@ public class BattleController extends SuperController implements Initializable {
 		System.out.println(initialTarget.getName() + "'s Current Health: " + initialTarget.getHealth());
 		if(damage > 0) {
 			textOutput = player.getName() + " used 20 energy to attack "
-					+ initialTarget.getName() + " and dealt " + damage + " \ndamage!";
+					+ initialTarget.getName() + " and dealt " + damage + " damage!";
 			if(player.hasEffect("Hawkeye")) {
-				if(damage > (player.getAttack()*2)) {
+				if(damage > (player.getAttack()+player.getWeapon().getAtkBonus())) {
 					textOutput += " Critical Hit!";
 				}
 			}
@@ -340,33 +339,32 @@ public class BattleController extends SuperController implements Initializable {
 					+ " stalled\n and both regained 50 energy!";
 		}
 		else {
-		switch(order) {
-			case ("Archer"):
-				textOutput = player.getName() + " concentrated on their foes!\n";
-				break;
-			case ("Bard"):
-				textOutput = player.getName() + " played a little tune! Your party regained 150 energy!";
-				break;
-			case ("Cleric"):
-				textOutput = player.getName() + " cast a revival spell! Your party healed by 20 hp!";
-				break;
-			case ("Knight"):
-				textOutput = player.getName() + " gathered their resolve!\n";
-				break;
-			case ("Mage"):
-				textOutput = player.getName() + " cast a powerful explosion dealing " + player.getAttack() + " damage to all enemies!\n";
-				break;
-			case ("Rogue"):
-				textOutput = player.getName() + " vanished into a puff of smoke!\n";
-				break;
-			default:
-				textOutput = "Generic skill text here";
-				break;
-		}
-		
+			switch(order) {
+				case ("Archer"):
+					textOutput = player.getName() + " concentrated on their foes!\n";
+					break;
+				case ("Bard"):
+					textOutput = player.getName() + " played a little tune! Your party regained 150 energy!";
+					break;
+				case ("Cleric"):
+					textOutput = player.getName() + " cast a revival spell! Your party healed by 20 hp!";
+					break;
+				case ("Knight"):
+					textOutput = player.getName() + " gathered their resolve!\n";
+					break;
+				case ("Mage"):
+					textOutput = player.getName() + " cast a powerful explosion dealing " + player.getAttack() + " damage to all enemies!\n";
+					break;
+				case ("Rogue"):
+					textOutput = player.getName() + " vanished into a puff of smoke!\n";
+					break;
+				default:
+					textOutput = "Generic skill text here";
+					break;
+			}
 		endTurn(e);
+		}
 	}
-        }
 	@FXML public void mcSkill(ActionEvent e) {
 		skill(e, tlg.mc);
 	}
@@ -374,8 +372,3 @@ public class BattleController extends SuperController implements Initializable {
 		skill(e, tlg.partner);
 	}
 }
-
-
-
-
-
