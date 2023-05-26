@@ -20,7 +20,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
 public class MapController extends SuperController implements Initializable{
-	private String lastFileName;
 	private ArrayList<Room> map;
 	
 	@Override
