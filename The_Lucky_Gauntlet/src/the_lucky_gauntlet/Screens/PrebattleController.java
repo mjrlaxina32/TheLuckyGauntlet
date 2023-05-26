@@ -1,11 +1,13 @@
 package the_lucky_gauntlet.Screens;
 
 // Utility
-import java.util.ArrayList;
+import the_lucky_gauntlet.*;
+import the_lucky_gauntlet.Rooms.R_Peaceful;
 
 // JavaFX Set-up
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.*;
 
 // Components
@@ -81,6 +83,8 @@ public class PrebattleController extends SuperController implements Initializabl
 		openNewWindow("Pause.fxml", e);
 	}
 	@FXML void openWeaponSelect(ActionEvent e) throws IOException{
+                actionsource = (((Button)e.getSource()).getId()).replace("ChangeWeapon","");
+                System.out.println(actionsource);
 		openNewWindow("WeaponSelect.fxml", e);
 	}
 	
