@@ -16,7 +16,7 @@ public class P_Bard extends Player{
 		super(n, t, "Bard.png");
 		System.out.println("Order: Bard");
 		this.resetAtkValue(5);
-		Weapon kazoo = new Weapon("Kazoo", "Door.png", "Bard", 5, 50);
+		Weapon kazoo = new Weapon("Kazoo", "Kazoo.png", "Bard", 5, 50);
 		this.gainWeapon(kazoo);
                 weapon = kazoo;
 	}
