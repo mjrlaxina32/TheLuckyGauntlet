@@ -19,7 +19,7 @@ public class P_Mage extends Player {
 		super(n, t,"Mage.png");
 		this.resetEnergyValue(40);
 		System.out.println("Order: Mage");
-		Weapon staff = new Weapon("Staff","Door.png","Mage", 5, 50);
+		Weapon staff = new Weapon("Staff","Staff2.png","Mage", 5, 50);
 		this.gainWeapon(staff);
                 weapon = staff;
 	}
