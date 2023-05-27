@@ -94,17 +94,41 @@ public class PrebattleController extends SuperController implements Initializabl
 	
         @FXML void findWeapon(ActionEvent e){
                 actionsource = (((Button)e.getSource()).getId()).replace("FindWeapon","");
+                String textOutput = null;
+                int wCou;
                 switch (actionsource) {
                 case "mc":
+                    wCou = tlg.mc.getWeaponList().size();
                     tlg.mc.newWeapon();
+                    if (wCou < tlg.mc.getWeaponList().size()){
+                    textOutput = tlg.mc.getName() + " recieved new weapon " + tlg.mc.getWeaponFromList(tlg.mc.getWeaponList().size()-1).getName()
+                            + "\n with attack bonus " + tlg.mc.getWeaponFromList(tlg.mc.getWeaponList().size()-1).getAtkBonus() 
+                            + ". and durability " + tlg.mc.getWeaponFromList(tlg.mc.getWeaponList().size()-1).getMaxDurability() + "!"; 
+                    }
+                    else{
+                        textOutput = tlg.mc.getName() + " failed to find a new weapon.";
+                    }
+                    wCou = tlg.mc.getWeaponList().size();
                     break;
                 case "partner":
-                    tlg.partner.newWeapon();;
+                    wCou = tlg.partner.getWeaponList().size();
+                    tlg.partner.newWeapon();
+                    if (wCou < tlg.partner.getWeaponList().size()){
+                    textOutput = tlg.partner.getName() + " recieved new weapon " + tlg.partner.getWeaponFromList(tlg.partner.getWeaponList().size()-1).getName()
+                            + "\n with attack bonus " + tlg.partner.getWeaponFromList(tlg.partner.getWeaponList().size()-1).getAtkBonus() 
+                            + ". and durability " + tlg.partner.getWeaponFromList(tlg.partner.getWeaponList().size()-1).getMaxDurability() + "!"; 
+                    }
+                    else{
+                        textOutput = tlg.partner.getName() + " failed to find a new weapon.";
+                    }
+                    wCou = tlg.partner.getWeaponList().size();
                     break;      
                 default:
                     tlg.mc.newWeapon();
                     break;      
                 }
+                performAction(textOutput);
+                currentRoom.reduceAc();
         }
         
         @FXML void enhanceWeapon(ActionEvent e){
@@ -113,11 +137,13 @@ public class PrebattleController extends SuperController implements Initializabl
                 switch (actionsource) {
                 case "mc":
                     tlg.mc.getWeapon().enhance();
-                    textOutput = tlg.mc.getName() + " enhanced their " + tlg.mc.getWeapon().getName() + ".\n The attack bonus is now " + tlg.mc.getWeapon().getAtkBonus() + "."; 
+                    textOutput = tlg.mc.getName() + " enhanced their " + tlg.mc.getWeapon().getName() 
+                            + ".\n The attack bonus is now " + tlg.mc.getWeapon().getAtkBonus() + "."; 
                     break;
                 case "partner":
                     tlg.partner.getWeapon().enhance();
-                    textOutput = tlg.partner.getName() + " enhanced their " + tlg.partner.getWeapon().getName() + ".\n The attack bonus is now " + tlg.partner.getWeapon().getAtkBonus() + "."; 
+                    textOutput = tlg.partner.getName() + " enhanced their " + tlg.partner.getWeapon().getName() 
+                            + ".\n The attack bonus is now " + tlg.partner.getWeapon().getAtkBonus() + "."; 
                     break;      
                 default:
                     tlg.mc.getWeapon().enhance();
@@ -134,7 +160,9 @@ public class PrebattleController extends SuperController implements Initializabl
                 case "mc":
                     try{
                         tlg.mc.getWeapon().repair();
-                        textOutput = tlg.mc.getName() + " repaired their " + tlg.mc.getWeapon().getName() + ".\n The durability is now " + tlg.mc.getWeapon().getDurability() +  "/" +  tlg.mc.getWeapon().getMaxDurability() + "."; 
+                        textOutput = tlg.mc.getName() + " repaired their " + tlg.mc.getWeapon().getName() 
+                                + ".\n The durability is now " + tlg.mc.getWeapon().getDurability() +  "/" 
+                                +  tlg.mc.getWeapon().getMaxDurability() + "."; 
                         break;
                     }
                     catch(BeyondRangeException BRE){
@@ -145,7 +173,9 @@ public class PrebattleController extends SuperController implements Initializabl
                 case "partner":
                     try{
                         tlg.partner.getWeapon().repair();
-                        textOutput = tlg.partner.getName() + " repaired their " + tlg.partner.getWeapon().getName() + ".\n The durability is now " + tlg.partner.getWeapon().getDurability() +  "/" +  tlg.partner.getWeapon().getMaxDurability() + "."; 
+                        textOutput = tlg.partner.getName() + " repaired their " + tlg.partner.getWeapon().getName() 
+                                + ".\n The durability is now " + tlg.partner.getWeapon().getDurability() 
+                                +  "/" +  tlg.partner.getWeapon().getMaxDurability() + "."; 
                         break;
                     }
                     catch(BeyondRangeException BRE){
