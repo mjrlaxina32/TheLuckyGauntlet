@@ -65,6 +65,8 @@ public class PauseController extends SuperController implements Initializable {
 		
 		mcPhoto.setImage(tlg.mc.getImg());
 		partnerPhoto.setImage(tlg.partner.getImg());
+                mcWeaponPhoto.setImage(tlg.mc.getWeapon().getImg());
+                partnerWeaponPhoto.setImage(tlg.partner.getWeapon().getImg());
 	}
 	
 	@FXML private void openMap(ActionEvent event) throws IOException {
