@@ -16,7 +16,7 @@ public class P_Archer extends Player {
         public P_Archer(String n, String t) {
 		super(n, t, "Archer.png");
 		System.out.println("Order: Archer");
-		Weapon bow = new Weapon("Bow","Door.png", "Archer", 3, 50); //placeholdoor
+		Weapon bow = new Weapon("Bow","Bow.png", "Archer", 3, 50); //placeholdoor
 		this.gainWeapon(bow);
 		weapon = bow;
 	}
