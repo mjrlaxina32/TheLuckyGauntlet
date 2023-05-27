@@ -164,10 +164,13 @@ public class Player extends Character {
 		
 		if (rand.nextInt(5) > 3) {
 			Weapon findings = new Weapon("Hello", orders[rand.nextInt(6)], rand.nextInt(7) + 3, rand.nextInt(30) + 20);
-			System.out.print("Would you like to keep the weapon \"" + findings.getName() + "\"? (y/n)");
-			String choice = sc.nextLine();
-			if (choice.equals("y"))
+			//System.out.print("Would you like to keep the weapon \"" + findings.getName() + "\"? (y/n)");
+			//String choice = sc.nextLine();
+			//if (choice.equals("y"))
 				gainWeapon(findings);
 		}
+                else {
+                        System.out.println("failed gacha L");
 	}
+}
 }
