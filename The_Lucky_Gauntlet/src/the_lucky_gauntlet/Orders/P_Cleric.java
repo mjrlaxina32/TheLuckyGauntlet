@@ -18,7 +18,7 @@ public class P_Cleric extends Player{
 		super(n, t, "Cleric.png");
 		System.out.println("Order: Cleric");
 		this.resetHealthValue(5);
-		Weapon staff = new Weapon("Staff", "Door.png", "Cleric", 6, 50);
+		Weapon staff = new Weapon("Staff", "Staff1.png", "Cleric", 6, 50);
 		this.gainWeapon(staff);
                 weapon = staff;
 	}
