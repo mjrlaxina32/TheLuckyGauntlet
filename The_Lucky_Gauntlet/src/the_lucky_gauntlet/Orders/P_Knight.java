@@ -17,7 +17,7 @@ public class P_Knight extends Player{
 		super(n,t,"Knight.png");
 		System.out.println("Order: Knight");
 		this.resetHealthValue(10);
-		Weapon sword = new Weapon("Sword","Door.png", "Knight", 6, 50);
+		Weapon sword = new Weapon("Sword","Sword.png", "Knight", 6, 50);
 		this.gainWeapon(sword);
                 weapon = sword;
 	}
