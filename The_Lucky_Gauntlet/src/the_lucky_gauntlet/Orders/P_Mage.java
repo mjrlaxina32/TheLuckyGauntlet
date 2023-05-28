@@ -15,13 +15,13 @@ public class P_Mage extends Player {
          * @param n Name of the order
          * @param t Player type of the order
          */
-        public P_Mage(String n, String t) {
+	public P_Mage(String n, String t) {
 		super(n, t,"Mage.png");
 		this.resetEnergyValue(40);
 		System.out.println("Order: Mage");
 		Weapon staff = new Weapon("Staff","Staff2.png","Mage", 5, 50);
 		this.gainWeapon(staff);
-                weapon = staff;
+		weapon = staff;
 	}
         /**
          * Runs the useSkill method of the Mage.
@@ -33,11 +33,11 @@ public class P_Mage extends Player {
 		try {
 			this.useEnergy(cost);
 			System.out.printf("%s cast a powerful explosion dealing %d damage to all" +
-												"enemies!\n", this.getName(), this.getAttack());
+												"enemies!\n", this.getName(), Math.round(((float)this.getAttack()/(float)1.5)));
 			ArrayList<Enemy> enemies = tlg.currentRoom.getAllEnemies();
 			for(Enemy e : enemies) {
 				this.targetSelect(e);
-				e.takeDamage(this.getAttack());
+				e.takeDamage(Math.round((float)this.getAttack()/(float)1.5));
 			}
 		}
 		catch (NoEnergyException NEE) {
