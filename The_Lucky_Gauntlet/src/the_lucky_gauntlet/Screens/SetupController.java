@@ -2,6 +2,8 @@ package the_lucky_gauntlet.Screens;
 
 // Utility
 import java.util.Random;
+import the_lucky_gauntlet.tlg;
+import the_lucky_gauntlet.Screens.*;
 
 // Java-fx Set-up
 import java.net.URL;
@@ -20,10 +22,8 @@ import javafx.event.ActionEvent;
 // Exceptions
 import the_lucky_gauntlet.Exceptions.InvalidOrderException;
 import java.io.IOException;
-
-// Lucky Gauntlet Imports
-import the_lucky_gauntlet.tlg;
-import the_lucky_gauntlet.Room;
+import javafx.event.Event;
+import the_lucky_gauntlet.Player;
 
 public class SetupController extends SuperController implements Initializable {
 	@FXML Text mcAtk, mcEnergy, mcHealth, partnerOrder, partnerAtk, partnerEnergy, partnerHealth;
@@ -38,13 +38,19 @@ public class SetupController extends SuperController implements Initializable {
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		Room.resetRooms();
 		for (String orderName : orders){
 			mcOrder.getItems().add(orderName);
 		}
 	}
-	
-	public void updateStats() {
+        @FXML private void setBG(Event event)throws IOException{
+            ((TextField)event.getSource()).setStyle("-fx-background-radius: 20; -fx-background-color: pink");
+        }
+
+        @FXML private void resetBG(Event event)throws IOException{
+            ((TextField)event.getSource()).setStyle("-fx-background-radius: 20; -fx-background-color: white");
+        }
+        
+        public void updateStats() {
 		mcAtk.setText("ATK: " + tlg.mc.getAttack());
 		mcEnergy.setText("Max Energy: " + tlg.mc.getMaxEnergy());
 		mcHealth.setText("Max Health: " + tlg.mc.getMaxHealth());
@@ -72,7 +78,6 @@ public class SetupController extends SuperController implements Initializable {
 			tlg.partner = tlg.PlayerCreation(orderIndex, partnerName.getText(), "partner");
 			
 			tlg.mc.setPartner(tlg.partner);
-			tlg.partner.setPartner(tlg.mc);
 			
 			startButton.setText("Start");
 			

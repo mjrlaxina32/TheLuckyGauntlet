@@ -15,7 +15,7 @@
          <children>
             <VBox alignment="CENTER_RIGHT" prefHeight="125.0" prefWidth="300.0">
                <children>
-                  <TextField fx:id="mcName" alignment="CENTER" prefHeight="40.0" prefWidth="300.0" style="-fx-background-radius: 20;" text="[Input player name]">
+                  <TextField fx:id="mcName" alignment="CENTER" onMouseEntered="#setBG" onMouseExited="#resetBG" prefHeight="40.0" prefWidth="300.0" style="-fx-background-radius: 20;" text="[Input player name]">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -69,7 +69,7 @@
          <children>
             <VBox alignment="CENTER_RIGHT" prefHeight="125.0" prefWidth="300.0">
                <children>
-                  <TextField fx:id="partnerName" alignment="CENTER" prefHeight="40.0" prefWidth="300.0" style="-fx-background-radius: 20;" text="[Input pratner name]">
+                  <TextField fx:id="partnerName" alignment="CENTER" onMouseEntered="#setBG" onMouseExited="#resetBG" prefHeight="40.0" prefWidth="300.0" style="-fx-background-radius: 20;" text="[Input pratner name]">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
