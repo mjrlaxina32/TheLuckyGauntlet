@@ -99,6 +99,9 @@ public abstract class Room {
 	public void completeRoom() {
 		completed = true;
 	}
+        public boolean isCompleted() {
+		return completed;
+	}
         /**
          * Clears map and creates a new randomized one.
          */
