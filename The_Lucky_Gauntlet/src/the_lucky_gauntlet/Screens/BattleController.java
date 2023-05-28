@@ -60,7 +60,7 @@ public class BattleController extends SuperController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-	    actionText.setWrappingWidth(160);
+		actionText.setWrappingWidth(160);
     }
 	public void delayedInitialize(){
 		// Lets the current room be updated first before initialization
@@ -84,7 +84,7 @@ public class BattleController extends SuperController implements Initializable {
 		tlg.mc.targetSelect(currentRoom.getAllEnemies().get(enemyIndex));
 		tlg.partner.targetSelect(currentRoom.getAllEnemies().get(enemyIndex));
 	}
-        
+	
 	// Enemy on-hover highlighting
 	@FXML private void highlight(MouseEvent event){
 		DropShadow dropShadow = new DropShadow();
@@ -96,10 +96,10 @@ public class BattleController extends SuperController implements Initializable {
 		((ImageView)event.getSource()).setEffect(dropShadow);
 		((ImageView)event.getSource()).setFitHeight(230);
 	}
-        @FXML private void dehighlight(MouseEvent event){      
-            ((ImageView)event.getSource()).setEffect(null);
-            ((ImageView)event.getSource()).setFitHeight(115);
-        }
+	@FXML private void dehighlight(MouseEvent event){      
+		((ImageView)event.getSource()).setEffect(null);
+		((ImageView)event.getSource()).setFitHeight(115);
+	}
 	
 	// Button Disabling
 	public void disableButtons() {
@@ -365,8 +365,8 @@ public class BattleController extends SuperController implements Initializable {
 					textOutput = "Generic skill text here";
 					break;
 			}
-		endTurn(e);
 		}
+		endTurn(e);
 	}
 	@FXML public void mcSkill(ActionEvent e) {
 		skill(e, tlg.mc);
