@@ -31,7 +31,7 @@ public class P_Archer extends Player {
 		try {
 			this.useEnergy(cost);
 			System.out.println(this.getName() + " concentrated on his foes!\n");
-			this.effects.add("Hawkeye");	
+			this.addEffect("Hawkeye", 7);	
 		}
 		catch(NoEnergyException NEE) {
 			this.stall();
