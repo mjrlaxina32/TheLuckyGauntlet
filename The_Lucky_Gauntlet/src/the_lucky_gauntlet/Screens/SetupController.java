@@ -78,6 +78,7 @@ public class SetupController extends SuperController implements Initializable {
 			tlg.partner = tlg.PlayerCreation(orderIndex, partnerName.getText(), "partner");
 			
 			tlg.mc.setPartner(tlg.partner);
+			tlg.partner.setPartner(tlg.mc);
 			
 			startButton.setText("Start");
 			
