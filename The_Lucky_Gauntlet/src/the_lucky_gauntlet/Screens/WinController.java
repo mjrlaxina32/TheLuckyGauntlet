@@ -26,7 +26,7 @@ public class WinController extends SuperController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {}
 
     @FXML private void openMap(ActionEvent e) {
-        openNewWindow("Map.fxml", e);		
+        this.openNewWindow("Map.fxml", e);
     }
     
     @FXML private void highlight(Event event) {
