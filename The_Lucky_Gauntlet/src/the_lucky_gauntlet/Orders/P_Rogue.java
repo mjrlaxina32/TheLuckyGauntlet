@@ -13,12 +13,12 @@ public class P_Rogue extends Player{
          * @param n Name of the order
          * @param t Player type of the order
          */
-        public P_Rogue(String n, String t){
+	public P_Rogue(String n, String t){
 		super(n, t, "Rogue.png");
 		System.out.println("Order: Rouge");
    		Weapon pistol = new Weapon("Pistol","Pistol.png", "Rogue",7, 60);
 		this.gainWeapon(pistol);		
-                weapon = pistol;
+		weapon = pistol;
 	}
         /**
          * Runs the useSkill method of the Rouge.
@@ -30,7 +30,7 @@ public class P_Rogue extends Player{
 		try {
 			this.useEnergy(cost);
 			System.out.println(this.getName() + " vanished into a puff of smoke!");
-			this.effects.add("Ghost in the Fog");
+			this.addEffect("Ghost in the Fog", 7);
 		}
 		catch (NoEnergyException NEE) {
 			this.stall();
