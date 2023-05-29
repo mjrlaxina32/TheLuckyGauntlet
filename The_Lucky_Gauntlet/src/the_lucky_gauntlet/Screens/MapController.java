@@ -62,8 +62,8 @@ public class MapController extends SuperController implements Initializable{
 		
 		if(roomIndex == 18) {
 			bossIsOpen = true;
-			for(Room r : map) {
-				if(!r.isCompleted()) {
+			for(int i=0;i<18;i++) {
+				if(!map.get(i).isCompleted()) {
 					bossIsOpen = false;
 					break;
 				}
