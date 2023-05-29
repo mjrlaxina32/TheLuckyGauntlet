@@ -15,10 +15,10 @@ public class Player extends Character {
     /**
      * Indicates whether Player is a player or a partner; no longer in use.
      */
-    protected String playerType;
+	protected String playerType;
 	private ArrayList<Weapon> weaponList = new ArrayList<Weapon>();
 	private static ArrayList<Player> players = new ArrayList<Player>();
-        
+
         /**
          * Creates a player with a name, image filename, order, weapon, and adds it to the player list.
          * @param newName Name of player
@@ -159,18 +159,18 @@ public class Player extends Character {
 	/**
          * Asks the user if the player if they would like to keep a weapon, then adds it to the weapon list.
          */
-        public void newWeapon() {
+	public void newWeapon() {
 		String[] orders = {"Archer", "Bard", "Cleric", "Knight", "Mage", "Rogue"};
 		
-		if (rand.nextInt(5) > 3) {
-			Weapon findings = new Weapon("Hello", orders[rand.nextInt(6)], rand.nextInt(7) + 3, rand.nextInt(30) + 20);
+		if (rand.nextInt(5) > 3) { 
+			Weapon findings = new Weapon("Hello", "Door.png", orders[rand.nextInt(6)], rand.nextInt(7) + 3, rand.nextInt(30) + 20);
 			//System.out.print("Would you like to keep the weapon \"" + findings.getName() + "\"? (y/n)");
 			//String choice = sc.nextLine();
 			//if (choice.equals("y"))
-				gainWeapon(findings);
+			gainWeapon(findings);
 		}
                 else {
                         System.out.println("failed gacha L");
+                }
 	}
-}
 }
